@@ -1,0 +1,22 @@
+{
+  "name": "chilpayate-balloons",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Plataforma moderna y minimalista de arreglos y estilismo de globos",
+  "scripts": {
+    "dev": "npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:all": "concurrently \"npm run dev:server\" \"npm run dev\"",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server"
+  },
+  "keywords": [
+    "balloons",
+    "react",
+    "tailwind",
+    "animations",
+    "express"
+  ],
+  "author": "Chilpayate Balloons",
+  "license": "MIT"
+}
