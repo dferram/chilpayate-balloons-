@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { PRODUCTS, CATEGORIES } from '../data/products';
-import { ChevronLeft, ChevronRight, Star, Eye, MessageCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Eye, MessageCircle, ImageOff } from 'lucide-react';
 
 export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -22,7 +22,7 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
   };
 
   return (
-    <section id="catalogo" className="py-24 relative bg-[#F9F7F4] border-t border-stone-200">
+    <section id="catalogo" className="py-24 relative bg-[#F9F7F4] border-t border-stone-200 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -32,10 +32,10 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
               Catálogo de Diseños
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-5xl text-charcoal-950 tracking-tight">
-              Arreglos y Composiciones
+              Arreglos y Montajes
             </h2>
             <p className="text-stone-600 text-sm sm:text-base">
-              Selección de nuestros diseños más solicitados. Todos adaptables en paleta de color y texto.
+              Selección de nuestros diseños y estructuras orgánicas. Todos adaptables en paleta cromática y escala.
             </p>
           </div>
 
@@ -43,14 +43,14 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
           <div className="hidden sm:flex items-center gap-2">
             <button
               onClick={() => handleScroll('left')}
-              className="p-3 rounded-full bg-white border border-stone-300 hover:bg-stone-100 text-charcoal-900 transition"
+              className="p-3 rounded-full bg-white border border-stone-300 hover:bg-stone-100 text-charcoal-900 transition shadow-2xs"
               aria-label="Anterior"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => handleScroll('right')}
-              className="p-3 rounded-full bg-white border border-stone-300 hover:bg-stone-100 text-charcoal-900 transition"
+              className="p-3 rounded-full bg-white border border-stone-300 hover:bg-stone-100 text-charcoal-900 transition shadow-2xs"
               aria-label="Siguiente"
             >
               <ChevronRight className="w-4 h-4" />
@@ -68,7 +68,7 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition flex items-center gap-2 ${
                   isActive
-                    ? 'bg-charcoal-950 text-white'
+                    ? 'bg-charcoal-950 text-white shadow-xs'
                     : 'bg-white text-stone-700 hover:text-charcoal-950 hover:bg-stone-100 border border-stone-300'
                 }`}
               >
@@ -95,22 +95,29 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
               key={product.id}
               className="w-[290px] sm:w-[330px] md:w-[350px] flex-shrink-0 snap-start rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-stone-400 transition-all flex flex-col group overflow-hidden"
             >
-              {/* Card Image */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-500"
-                  loading="lazy"
-                />
+              {/* Card Image Placeholder (Clean Studio Placeholder Box) */}
+              <div
+                onClick={() => onSelectProduct(product)}
+                className="relative aspect-[4/3] bg-stone-100 border-b border-stone-200 flex flex-col items-center justify-center p-6 text-center cursor-pointer group-hover:bg-stone-150 transition-colors select-none"
+              >
+                {/* Visual placeholder wireframe / icon */}
+                <div className="w-14 h-14 rounded-2xl bg-stone-200/80 border border-stone-300/80 flex items-center justify-center text-stone-500 mb-2 group-hover:scale-105 transition-transform">
+                  <ImageOff className="w-6 h-6 text-stone-400" />
+                </div>
+                <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider block">
+                  Foto de Referencia
+                </span>
+                <span className="text-[10px] text-stone-400 mt-0.5">
+                  {product.dimensions}
+                </span>
 
                 <div className="absolute top-3 left-3">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-white/95 text-stone-800 border border-stone-200">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-white/95 text-stone-800 border border-stone-200 shadow-2xs">
                     {product.tag}
                   </span>
                 </div>
 
-                <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-white/95 border border-stone-200 flex items-center gap-1 text-xs font-medium text-stone-800">
+                <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-white/95 border border-stone-200 flex items-center gap-1 text-xs font-medium text-stone-800 shadow-2xs">
                   <Star className="w-3 h-3 fill-stone-800 text-stone-800" />
                   <span>{product.rating}</span>
                 </div>
@@ -125,7 +132,7 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
                   
                   <h3
                     onClick={() => onSelectProduct(product)}
-                    className="font-display font-bold text-lg text-charcoal-950 hover:text-stone-600 transition cursor-pointer"
+                    className="font-display font-bold text-lg text-charcoal-950 hover:text-stone-600 transition cursor-pointer leading-snug"
                   >
                     {product.name}
                   </h3>
@@ -151,7 +158,7 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
                 <div className="pt-3 border-t border-stone-100 flex items-center justify-between">
                   <div>
                     <span className="text-[10px] uppercase font-semibold text-stone-500 block">
-                      Precio
+                      Precio Estimado
                     </span>
                     <div className="flex items-baseline gap-1.5">
                       <span className="font-display font-bold text-xl text-charcoal-950">
@@ -194,20 +201,20 @@ export default function ProductCarousel({ onSelectProduct, onQuickQuote }) {
         <div className="mt-12 rounded-2xl bg-white border border-stone-300 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center md:text-left">
             <h3 className="font-display font-bold text-xl text-charcoal-950">
-              ¿Buscas un diseño específico o personalizado?
+              ¿Tienes una imagen o referencia de Pinterest o Instagram?
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 max-w-xl">
-              Trabajamos sobre tus referencias o temática particular para entregarte una propuesta a la medida.
+              Envíanos tu foto de referencia por WhatsApp y te cotizamos el montaje a la medida exacta de tu espacio.
             </p>
           </div>
 
           <a
-            href="https://wa.me/5215555555555?text=Hola,%20tengo%20una%20referencia%20de%20dise%C3%B1o%20y%20me%20gustar%C3%ADa%20cotizarla."
+            href="https://wa.me/5215555555555?text=Hola,%20tengo%20una%20foto%20de%20referencia%20y%20me%20gustar%C3%ADa%20cotizarla%20para%20un%20montaje."
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 rounded-full font-semibold text-xs text-white bg-charcoal-950 hover:bg-stone-800 transition whitespace-nowrap"
+            className="px-6 py-3.5 rounded-full font-semibold text-xs text-white bg-charcoal-950 hover:bg-stone-800 transition whitespace-nowrap shadow-xs"
           >
-            Enviar referencia por WhatsApp
+            Enviar foto por WhatsApp
           </a>
         </div>
 

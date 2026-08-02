@@ -1,66 +1,10 @@
 export const CATEGORIES = [
-  { id: 'all', label: 'Todos los Trabajos', count: 12 },
-  { id: 'arcos', label: 'Arcos y Guirnaldas', count: 5 },
-  { id: 'backdrops', label: 'Backdrops y Muros', count: 3 },
-  { id: 'bouquets', label: 'Bouquets y Burbujas', count: 2 },
-  { id: 'gigantes', label: 'Números Monumentales', count: 2 },
+  { id: 'all', label: 'Todos los Trabajos', count: 6 },
+  { id: 'arcos', label: 'Arcos y Guirnaldas', count: 3 },
+  { id: 'backdrops', label: 'Backdrops y Muros', count: 1 },
+  { id: 'bouquets', label: 'Bouquets y Burbujas', count: 1 },
+  { id: 'gigantes', label: 'Números Monumentales', count: 1 },
 ];
-
-export const SEASONAL_PATRIO = {
-  seasonName: 'Temporada: Fiestas Patrias',
-  subtitle: 'Edición Limitada 15 de Septiembre',
-  description: 'Composiciones orgánicas y montajes de gran formato diseñados para cenas patrias, eventos corporativos y celebraciones de la Noche Mexicana.',
-  designs: [
-    {
-      id: 'arco-patrio-monumental',
-      title: 'Arco Monumental Tricolor Orgánico',
-      type: 'Arco Orgánico Asimétrico',
-      dimensions: '4.0m de longitud',
-      price: 3950,
-      description: 'Diseño volumétrico con globos látex en verde bandera mate, blanco nácar y rojo carmín intenso, acentuado con esferas cromo dorado y follaje verde.',
-      image: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=900&q=80',
-      tag: 'Más Solicitado para 15 Sep',
-      includes: [
-        'Estructura autoportante de 4 metros',
-        'Globos de 5", 11", 18" y 24" calibrados a mano',
-        'Montaje e instalación en la locación del evento',
-        'Detalles en cromo oro y follaje decorativo'
-      ]
-    },
-    {
-      id: 'backdrop-patrio-circular',
-      title: 'Backdrop Noche Mexicana',
-      type: 'Backdrop Circular con Aro',
-      dimensions: '2.0m diámetro x 2.2m alto',
-      price: 5400,
-      description: 'Estructura circular de aro dorado con media luna de globos orgánicos tricolores, letrero neón cálido y soporte para photocall patrio.',
-      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80',
-      tag: 'Ideal para Fotos',
-      includes: [
-        'Renta de aro monumental dorado',
-        'Guirnalda orgánica volumétrica de 3.2m',
-        'Letrero neón a elegir (Viva México / Celebración)',
-        'Montaje y retiro al finalizar el evento'
-      ]
-    },
-    {
-      id: 'bouquet-patrio-gala',
-      title: 'Bouquet Patrio Gala con Burbuja',
-      type: 'Bouquet de Helio',
-      dimensions: '1.90m de altura',
-      price: 1450,
-      description: 'Globo burbuja de 24 pulgadas personalizado con caligrafía patrio-dorada y racimo de 8 globos de látex helio en gama tricolor contemporánea.',
-      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
-      tag: 'Entrega a Domicilio',
-      includes: [
-        'Globo burbuja 24" con texto personalizado',
-        '8 globos helio látex con tratamiento Hi-Float',
-        'Base con peso forrado y listón de seda tricolor',
-        'Tarjeta de dedicatoria'
-      ]
-    }
-  ]
-};
 
 export const ARCH_STYLES = [
   {
@@ -109,7 +53,7 @@ export const COLOR_PALETTES = [
   {
     id: 'patrio-mexico',
     name: 'Tricolor Patrio (Verde, Blanco, Carmín)',
-    colors: ['#1C5435', '#F5F5F0', '#9E2432', '#CBA358'],
+    colors: ['#0B4F26', '#FAF7F0', '#A31D24', '#D4AF37'],
     description: 'Gama mexicana contemporánea para el 15 de Septiembre.'
   },
   {
@@ -138,7 +82,6 @@ export const PRODUCTS = [
     reviewsCount: 36,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
     description: 'Estructura asimétrica orgánica con globos látex de múltiples calibres (5", 11", 18" y 24") en acabado mate con follaje de eucalipto preservado.',
-    image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=80',
     accentColor: '#84AC91',
     dimensions: 'Longitud: 3.5 metros adaptables',
     durability: 'Duración de 2 a 3 semanas en interior',
@@ -161,7 +104,6 @@ export const PRODUCTS = [
     reviewsCount: 19,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
     description: 'Aro dorado monumental de 2 metros con media luna volumétrica de globos orgánicos, letrero neón personalizado y acentos florales.',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80',
     accentColor: '#DF7861',
     dimensions: 'Diámetro: 2.00m x Altura total: 2.20m',
     durability: 'Montaje para el día del evento',
@@ -184,7 +126,6 @@ export const PRODUCTS = [
     reviewsCount: 28,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
     description: 'Instalación continua diseñada para fijarse sobre muros, mamparas o detrás de la mesa principal en paleta cromática personalizada.',
-    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80',
     accentColor: '#DFB77D',
     dimensions: 'Longitud: 3.0 metros',
     durability: 'Duración de 2 a 3 semanas',
@@ -207,7 +148,6 @@ export const PRODUCTS = [
     reviewsCount: 48,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
     description: 'Globo burbuja transparente de 24 pulgadas personalizado con caligrafía artesanal y racimo de 8 globos látex con helio Hi-Float.',
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
     accentColor: '#DFB77D',
     dimensions: 'Alto: 1.90m x Ancho: 85cm',
     durability: 'Helio con tratamiento Hi-Float (4 a 7 días)',
@@ -230,7 +170,6 @@ export const PRODUCTS = [
     reviewsCount: 29,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
     description: 'Dos números gigantes foil de 102cm montados sobre base orgánica multicapa con minimotivos y acabado mate.',
-    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80',
     accentColor: '#B08038',
     dimensions: 'Alto: 1.60m x Ancho: 1.20m',
     durability: '10 a 15 días en interior',
@@ -247,15 +186,14 @@ export const PRODUCTS = [
     name: 'Arco Monumental 15 de Septiembre',
     category: 'arcos',
     tag: 'Edición Fiestas Patrias',
-    price: 3950,
-    originalPrice: 4400,
+    price: 4200,
+    originalPrice: 4600,
     rating: 5.0,
     reviewsCount: 15,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Arco orgánico asimétrico de 4 metros en paleta tricolor mate contemporánea para noche mexicana y recepciones.',
-    image: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#1C5435',
-    dimensions: 'Longitud: 4.0 metros',
+    description: 'Arco orgánico asimétrico de 4.5 metros en paleta tricolor mate contemporánea para noche mexicana y recepciones.',
+    accentColor: '#0B4F26',
+    dimensions: 'Longitud: 4.5 metros',
     durability: 'Instalación para eventos patrios',
     includes: [
       'Estructura de soporte seguro',
@@ -274,8 +212,7 @@ export const TESTIMONIALS = [
     role: 'Cumpleaños 30',
     comment: 'Contratamos el arco orgánico para la entrada y un bouquet de burbuja para la mesa principal. El montaje fue puntualísimo y la armonía de colores fue impecable.',
     rating: 5,
-    event: 'Arco Orgánico Asimétrico',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80'
+    event: 'Arco Orgánico Asimétrico'
   },
   {
     id: 2,
@@ -283,8 +220,7 @@ export const TESTIMONIALS = [
     role: 'Boda en Jardín',
     comment: 'El arco botánico con eucalipto natural fue el fondo perfecto para la ceremonia. La calidad del látex mate se vio increíble en las fotos sin reflejos molestos.',
     rating: 5,
-    event: 'Arco Orgánico Botánico',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
+    event: 'Arco Orgánico Botánico'
   },
   {
     id: 3,
@@ -292,8 +228,7 @@ export const TESTIMONIALS = [
     role: 'Evento Corporativo 15 Sep',
     comment: 'Cotizamos el montaje patrio para la cena de la empresa. La atención por WhatsApp fue muy profesional y el resultado superó las expectativas del equipo.',
     rating: 5,
-    event: 'Arco Monumental Tricolor',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80'
+    event: 'Arco Monumental Tricolor'
   }
 ];
 
