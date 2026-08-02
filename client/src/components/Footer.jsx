@@ -19,13 +19,13 @@ export default function Footer() {
                   CHILPAYATE
                 </span>
                 <span className="text-[9px] tracking-[0.2em] uppercase font-medium text-stone-400 font-sans">
-                  Balloon Styling Studio
+                  Balloon Styling Studio • Querétaro
                 </span>
               </div>
             </div>
 
             <p className="text-xs sm:text-sm text-stone-400 max-w-sm leading-relaxed">
-              Diseño, elaboración y montaje de composiciones con globos de látex biodegradable para bodas, celebraciones privadas y eventos corporativos en Ciudad de México.
+              Diseño, elaboración y montaje de arcos orgánicos, techos suspendidos y escenografías de globos para bodas en haciendas, celebraciones privadas y eventos en Querétaro.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -56,11 +56,11 @@ export default function Footer() {
               Colección
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
-              <li><a href="#catalogo" className="hover:text-white transition">Bouquets de Helio</a></li>
-              <li><a href="#catalogo" className="hover:text-white transition">Arcos Orgánicos</a></li>
-              <li><a href="#catalogo" className="hover:text-white transition">Cajas de Regalo Velvet</a></li>
-              <li><a href="#catalogo" className="hover:text-white transition">Números y Letras Gigantes</a></li>
-              <li><a href="#catalogo" className="hover:text-white transition">Revelación de Género</a></li>
+              <li><a href="#catalogo" className="hover:text-white transition">Arcos Orgánicos Asimétricos</a></li>
+              <li><a href="#catalogo" className="hover:text-white transition">Techos y Lluvias Suspendidas</a></li>
+              <li><a href="#catalogo" className="hover:text-white transition">Muros Monumentales (Walls)</a></li>
+              <li><a href="#catalogo" className="hover:text-white transition">Backdrops Circulares con Neón</a></li>
+              <li><a href="#temporada" className="hover:text-white transition">Edición 15 de Septiembre</a></li>
             </ul>
           </div>
 
@@ -70,7 +70,7 @@ export default function Footer() {
               Navegación
             </h4>
             <ul className="space-y-2 text-xs text-stone-400">
-              <li><a href="#personalizador" className="hover:text-white transition">Personalizador de Paleta</a></li>
+              <li><a href="#personalizador" className="hover:text-white transition">Configurador de Arcos</a></li>
               <li><a href="#servicios" className="hover:text-white transition">Servicios e Instalación</a></li>
               <li><a href="#proceso" className="hover:text-white transition">Metodología</a></li>
               <li><a href="#testimonios" className="hover:text-white transition">Opiniones de Clientes</a></li>
@@ -86,7 +86,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-stone-400">
               <li>Mantener en espacios con temperatura templada.</li>
               <li>Evitar la exposición directa a luz solar continua.</li>
-              <li>Proteger de corrientes de viento frío o aire acondicionado directo.</li>
+              <li>Fijaciones sin perforar cantera ni muros.</li>
               <li>Material 100% látex natural biodegradable.</li>
             </ul>
           </div>
@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
           <p>© {new Date().getFullYear()} Chilpayate Balloons. Todos los derechos reservados.</p>
-          <p>Ciudad de México</p>
+          <p>Santiago de Querétaro, Qro. • Juriquilla • El Campanario • Zibatá</p>
         </div>
 
       </div>

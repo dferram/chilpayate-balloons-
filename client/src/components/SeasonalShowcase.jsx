@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MessageCircle, Check, Sparkles, MapPin, Calendar, Flame } from 'lucide-react';
+import { MessageCircle, Check, MapPin, Flame } from 'lucide-react';
 
 export default function SeasonalShowcase() {
   const [activeTab, setActiveTab] = useState(0);
@@ -11,7 +11,7 @@ export default function SeasonalShowcase() {
       category: 'Arco Orgánico de Entrada',
       dimensions: '4.5 metros de desarrollo',
       price: 4200,
-      description: 'Gran instalación orgánica diseñada para portones, entradas de residencias y terrazas. Combinación de más de 180 globos calibrados en verde bandera mate, blanco nácar artesanal y rojo carmín granada, complementada con listones de satín patrio y ramas de follaje.',
+      description: 'Gran instalación orgánica diseñada para portones, entradas de residencias y haciendas queretanas. Combinación de más de 180 globos calibrados en verde bandera mate, blanco nácar artesanal y rojo carmín granada, complementada con listones de satín patrio y follaje.',
       accentColors: ['#0B4F26', '#FAF7F0', '#A31D24', '#D4AF37'],
       svgType: 'arch',
       tag: 'El Favorito para Noche Mexicana',
@@ -20,7 +20,7 @@ export default function SeasonalShowcase() {
         'Globos látex biodegradables en 4 calibres (5", 11", 18" y 24")',
         'Listones colgantes tricolores de satín fino',
         'Follaje verde preservado integrado',
-        'Instalación puntual el 14 o 15 de Septiembre en CDMX y Edomex'
+        'Instalación puntual el 14 o 15 de Septiembre en Querétaro y Juriquilla'
       ]
     },
     {
@@ -52,9 +52,9 @@ export default function SeasonalShowcase() {
       tag: 'Para Mesas y Barras',
       includes: [
         'Guirnalda orgánica de 3 metros sobre barra o muro',
-        'Fijaciones seguras sin perforar paredes ni dañar pintura',
+        'Fijaciones seguras sin perforar cantera ni dañar pintura',
         'Acentos tricolores mate y dorados metalizados',
-        'Montaje incluido en tu domicilio'
+        'Montaje incluido en tu domicilio en Querétaro'
       ]
     },
     {
@@ -71,7 +71,7 @@ export default function SeasonalShowcase() {
         'Globo burbuja de 24" con caligrafía patrio-dorada',
         '8 globos de látex tricolor con helio Hi-Float (flotación de 5+ días)',
         'Contrapeso artesanal forrado en lino',
-        'Listones de seda y tarjeta temática'
+        'Entrega a domicilio en Querétaro'
       ]
     }
   ];
@@ -80,12 +80,12 @@ export default function SeasonalShowcase() {
 
   const handleBookWhatsApp = (design) => {
     const text = encodeURIComponent(
-      `¡Hola Chilpayate Balloons!\n\n` +
+      `¡Hola Chilpayate Balloons Querétaro!\n\n` +
       `Me interesa apartar este montaje para la Noche Mexicana del 15 de Septiembre:\n` +
       `• Montaje: ${design.title}\n` +
       `• Formato: ${design.category} (${design.dimensions})\n` +
       `• Precio: $${design.price.toLocaleString('es-MX')}\n\n` +
-      `¿Tienen horario disponible para entrega/instalación en mi zona? ¡Gracias!`
+      `¿Tienen horario disponible para entrega/instalación en mi zona de Querétaro? ¡Gracias!`
     );
     window.open(`https://wa.me/5215555555555?text=${text}`, '_blank');
   };
@@ -117,7 +117,7 @@ export default function SeasonalShowcase() {
                 Edición Fiestas Patrias
               </span>
               <span className="text-xs font-semibold uppercase tracking-wider text-stone-400">
-                15 de Septiembre • México
+                15 de Septiembre • Querétaro
               </span>
             </div>
 
@@ -126,7 +126,7 @@ export default function SeasonalShowcase() {
             </h2>
 
             <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-              Celebra el Grito de Independencia con montajes tricolores de alta estética: verde agave, blanco nácar y rojo carmín con acentos dorados para casas, terrazas, haciendas y restaurantes.
+              Celebra el Grito de Independencia con montajes tricolores de alta estética para residencias, terrazas, haciendas y restaurantes en Querétaro y Juriquilla.
             </p>
           </div>
 
@@ -134,14 +134,14 @@ export default function SeasonalShowcase() {
           <div className="p-5 rounded-2xl bg-stone-900/90 border border-stone-700/80 text-xs text-stone-300 space-y-2 max-w-sm flex-shrink-0">
             <div className="flex items-center gap-2 text-white font-bold text-sm">
               <Flame className="w-4 h-4 text-amber-500" />
-              <span>Agenda Abierta para Septiembre</span>
+              <span>Agenda Abierta Querétaro</span>
             </div>
             <p className="text-stone-400 text-[11px] leading-relaxed">
-              Las fechas del 14, 15 y 16 de Septiembre tienen cupo limitado por ruta de montaje en CDMX y Zona Metropolitana.
+              Las fechas del 14, 15 y 16 de Septiembre tienen cupo limitado de montaje por zona.
             </p>
             <div className="flex items-center gap-2 text-[10px] text-stone-400 pt-1 font-medium">
               <MapPin className="w-3.5 h-3.5 text-stone-400" />
-              <span>CDMX, Huixquilucan, Naucalpan, San Ángel, Polanco y más</span>
+              <span>Juriquilla, El Campanario, Zibatá, Corregidora, Centro Histórico</span>
             </div>
           </div>
 
@@ -157,7 +157,7 @@ export default function SeasonalShowcase() {
                 onClick={() => setActiveTab(index)}
                 className={`p-5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between gap-5 relative overflow-hidden ${
                   isSelected
-                    ? 'bg-stone-900 border-stone-200 ring-2 ring-white/30 shadow-2xl'
+                    ? 'bg-stone-900 border-stone-200 ring-2 ring-white/30 shadow-2xl scale-[1.02]'
                     : 'bg-stone-950/70 border-stone-800/80 hover:bg-stone-900 hover:border-stone-700 text-stone-400'
                 }`}
               >
@@ -184,10 +184,9 @@ export default function SeasonalShowcase() {
                     <span className="font-bold text-white text-sm block">
                       ${design.price.toLocaleString('es-MX')}
                     </span>
-                    <span className="text-[10px] text-stone-400">Instalación incluida</span>
+                    <span className="text-[10px] text-stone-400">Montaje en Querétaro</span>
                   </div>
 
-                  {/* Color dots preview */}
                   <div className="flex items-center -space-x-1">
                     {design.accentColors.map((color, i) => (
                       <span
@@ -203,16 +202,19 @@ export default function SeasonalShowcase() {
           })}
         </div>
 
-        {/* Big Spotlight Display for the Selected Mexican Arrangement */}
-        <div className="rounded-3xl bg-stone-900 border border-stone-800 p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Big Spotlight Display with smooth pop animation on tab change */}
+        <div
+          key={activeDesign.id}
+          className="rounded-3xl bg-stone-900 border border-stone-800 p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-balloon-pop"
+        >
           
           {/* Left: Rich Realistic Organic Balloon Arch Illustration / Render Canvas */}
           <div className="lg:col-span-6 relative rounded-2xl bg-[#161519] border border-stone-800 aspect-[4/3] flex items-center justify-center p-6 overflow-hidden">
             
-            {/* Background Texture with Subtle Architectural Wood Frame */}
+            {/* Background Texture Frame */}
             <div className="absolute inset-4 rounded-xl border border-stone-800/80 pointer-events-none flex flex-col justify-between p-3">
               <div className="flex justify-between text-[9px] uppercase tracking-widest text-stone-400 font-mono">
-                <span>ESTUDIO CHILPAYATE</span>
+                <span>ESTUDIO QUERÉTARO</span>
                 <span>EDICIÓN 15 SEP</span>
               </div>
               <div className="text-center text-[10px] tracking-widest text-stone-400 uppercase font-sans">
@@ -220,10 +222,9 @@ export default function SeasonalShowcase() {
               </div>
             </div>
 
-            {/* Realistic Structural SVG Representation of Mexican Balloon Arch */}
+            {/* Realistic Structural SVG Representation */}
             <svg viewBox="0 0 400 300" className="w-full h-full max-h-72 drop-shadow-2xl z-10">
               <defs>
-                {/* 3D Balloon Shaders */}
                 <radialGradient id="greenBalloon" cx="35%" cy="35%" r="65%">
                   <stop offset="0%" stopColor="#2E8050" />
                   <stop offset="45%" stopColor="#0B4F26" />
@@ -248,19 +249,16 @@ export default function SeasonalShowcase() {
 
               {/* ARCH SHAPE */}
               {activeDesign.svgType === 'arch' && (
-                <g>
-                  {/* Doorway Portal Frame */}
+                <g className="transition-all duration-500">
                   <rect x="110" y="80" width="180" height="210" fill="none" stroke="#2D2B33" strokeWidth="2" strokeDasharray="4 4" rx="6" />
                   
-                  {/* Dense organic tricolor balloon clusters forming an asymmetric arch */}
-                  {/* Base Left */}
+                  {/* Dense organic tricolor balloon clusters */}
                   <circle cx="95" cy="270" r="26" fill="url(#greenBalloon)" />
                   <circle cx="80" cy="235" r="30" fill="url(#whiteBalloon)" />
                   <circle cx="105" cy="225" r="22" fill="url(#redBalloon)" />
                   <circle cx="85" cy="190" r="34" fill="url(#greenBalloon)" />
                   <circle cx="112" cy="175" r="18" fill="url(#goldBalloon)" />
                   
-                  {/* Arch Top Left to Top Right */}
                   <circle cx="95" cy="140" r="32" fill="url(#whiteBalloon)" />
                   <circle cx="120" cy="115" r="28" fill="url(#redBalloon)" />
                   <circle cx="150" cy="95" r="35" fill="url(#greenBalloon)" />
@@ -271,7 +269,7 @@ export default function SeasonalShowcase() {
                   <circle cx="295" cy="175" r="32" fill="url(#whiteBalloon)" />
                   <circle cx="305" cy="220" r="28" fill="url(#redBalloon)" />
                   
-                  {/* Mini filler accent balloons */}
+                  {/* Mini filler balloons */}
                   <circle cx="138" cy="130" r="12" fill="url(#goldBalloon)" />
                   <circle cx="170" cy="112" r="11" fill="url(#redBalloon)" />
                   <circle cx="202" cy="108" r="13" fill="url(#greenBalloon)" />
@@ -279,7 +277,6 @@ export default function SeasonalShowcase() {
                   <circle cx="270" cy="155" r="13" fill="url(#redBalloon)" />
                   <circle cx="282" cy="200" r="11" fill="url(#goldBalloon)" />
 
-                  {/* Hanging Silk Ribbons */}
                   <path d="M90 270 Q 95 285 92 300" stroke="#0B4F26" strokeWidth="2" fill="none" />
                   <path d="M105 270 Q 100 285 106 300" stroke="#FAF7F0" strokeWidth="2" fill="none" />
                   <path d="M120 270 Q 125 285 120 300" stroke="#A31D24" strokeWidth="2" fill="none" />
@@ -288,13 +285,11 @@ export default function SeasonalShowcase() {
 
               {/* CIRCLE BACKDROP SHAPE */}
               {activeDesign.svgType === 'circle' && (
-                <g>
-                  {/* Golden Metal Ring */}
+                <g className="transition-all duration-500">
                   <circle cx="200" cy="150" r="105" fill="none" stroke="#D4AF37" strokeWidth="4" />
                   <line x1="160" y1="255" x2="160" y2="290" stroke="#8A6D19" strokeWidth="3" />
                   <line x1="240" y1="255" x2="240" y2="290" stroke="#8A6D19" strokeWidth="3" />
 
-                  {/* Crescent Organic Clusters */}
                   <circle cx="120" cy="190" r="32" fill="url(#greenBalloon)" />
                   <circle cx="105" cy="150" r="36" fill="url(#whiteBalloon)" />
                   <circle cx="115" cy="110" r="30" fill="url(#redBalloon)" />
@@ -302,12 +297,10 @@ export default function SeasonalShowcase() {
                   <circle cx="180" cy="60" r="32" fill="url(#goldBalloon)" />
                   <circle cx="225" cy="65" r="28" fill="url(#whiteBalloon)" />
                   
-                  {/* Mini Accents */}
                   <circle cx="135" cy="140" r="14" fill="url(#goldBalloon)" />
                   <circle cx="145" cy="105" r="12" fill="url(#redBalloon)" />
                   <circle cx="165" cy="85" r="13" fill="url(#greenBalloon)" />
 
-                  {/* Neon Viva México sign in center */}
                   <rect x="165" y="135" width="110" height="34" rx="8" fill="#0A090D" stroke="#D4AF37" strokeWidth="1.5" />
                   <text x="220" y="157" textAnchor="middle" fill="#FAF7F0" fontSize="13" fontWeight="bold" fontFamily="sans-serif">
                     ¡VIVA MÉXICO!
@@ -317,11 +310,9 @@ export default function SeasonalShowcase() {
 
               {/* GARLAND SHAPE */}
               {activeDesign.svgType === 'garland' && (
-                <g>
-                  {/* Wall boundary */}
+                <g className="transition-all duration-500">
                   <line x1="50" y1="160" x2="350" y2="160" stroke="#2D2B33" strokeWidth="2" strokeDasharray="3 3" />
                   
-                  {/* Flowing garland */}
                   <circle cx="70" cy="140" r="24" fill="url(#greenBalloon)" />
                   <circle cx="105" cy="130" r="34" fill="url(#whiteBalloon)" />
                   <circle cx="145" cy="145" r="32" fill="url(#redBalloon)" />
@@ -339,21 +330,16 @@ export default function SeasonalShowcase() {
 
               {/* BOUQUET SHAPE */}
               {activeDesign.svgType === 'bouquet' && (
-                <g>
-                  {/* Helium String Lines */}
+                <g className="transition-all duration-500">
                   <path d="M200 135 Q 195 210 200 270" stroke="#D4AF37" strokeWidth="1.5" fill="none" />
-                  
-                  {/* Base weight */}
                   <rect x="185" y="270" width="30" height="15" rx="3" fill="#D4AF37" />
 
-                  {/* Helium Cluster under */}
                   <circle cx="175" cy="165" r="24" fill="url(#greenBalloon)" />
                   <circle cx="225" cy="165" r="24" fill="url(#redBalloon)" />
                   <circle cx="200" cy="180" r="22" fill="url(#goldBalloon)" />
                   <circle cx="180" cy="195" r="20" fill="url(#whiteBalloon)" />
                   <circle cx="220" cy="195" r="20" fill="url(#greenBalloon)" />
 
-                  {/* Big Crystal Bubble Sphere on top */}
                   <circle cx="200" cy="85" r="50" fill="#FAF7F0" fillOpacity="0.85" stroke="#FFFFFF" strokeWidth="2" />
                   <ellipse cx="180" cy="65" rx="12" ry="18" fill="#FFFFFF" fillOpacity="0.6" transform="rotate(-30 180 65)" />
                   <text x="200" y="90" textAnchor="middle" fill="#0B4F26" fontSize="12" fontWeight="bold" fontFamily="sans-serif">
@@ -398,7 +384,7 @@ export default function SeasonalShowcase() {
             {/* Inclusions */}
             <div className="space-y-3 pt-4 border-t border-stone-800">
               <span className="text-xs font-semibold uppercase tracking-wider text-stone-400 block">
-                Lo que incluye este montaje patrio:
+                Lo que incluye este montaje en Querétaro:
               </span>
               <ul className="space-y-2 text-xs text-stone-300">
                 {activeDesign.includes.map((inc, i) => (
@@ -414,7 +400,7 @@ export default function SeasonalShowcase() {
             <div className="pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <div>
                 <span className="text-[10px] uppercase font-semibold text-stone-400 block">
-                  Precio con Montaje Incluido
+                  Precio con Montaje en Querétaro
                 </span>
                 <span className="font-display font-bold text-3xl text-white">
                   ${activeDesign.price.toLocaleString('es-MX')}
@@ -426,7 +412,7 @@ export default function SeasonalShowcase() {
                 className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-black bg-white hover:bg-stone-200 transition flex items-center justify-center gap-2 shadow-lg"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Apartar por WhatsApp</span>
+                <span>Apartar en Querétaro</span>
               </button>
             </div>
 

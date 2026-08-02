@@ -4,13 +4,13 @@ import { ArrowRight, ArrowDown } from 'lucide-react';
 
 export default function Hero({ onOpenQuote }) {
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-[#F9F7F4]">
+    <section className="relative min-h-screen flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-[#F9F7F4] text-left">
       
       {/* 3D Realistic Balloon Physics Animation */}
       <HeroBalloonCanvas />
 
       {/* Hero Core Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto z-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto z-20 text-left">
         
         {/* Top Minimalist Tag */}
         <div className="flex items-center justify-between border-b border-stone-300/70 pb-4 mb-8 sm:mb-12">
@@ -18,25 +18,25 @@ export default function Hero({ onOpenQuote }) {
             Estudio de Arte en Globos
           </span>
           <span className="text-xs font-medium text-stone-500 font-sans hidden sm:inline-block">
-            Ciudad de México y Área Metropolitana
+            Santiago de Querétaro, Juriquilla y Alrededores
           </span>
         </div>
 
         {/* Massive Editorial Headline: CHILPAYATE */}
-        <div className="space-y-6 sm:space-y-8 select-none">
-          <div className="relative">
-            <h1 className="hero-title-giant text-charcoal-950 font-display tracking-tighter">
+        <div className="space-y-6 sm:space-y-8 select-none text-left">
+          <div className="relative text-left">
+            <h1 className="hero-title-giant text-charcoal-950 font-display tracking-tighter text-left">
               CHILPAYATE
             </h1>
-            <p className="text-sm sm:text-base md:text-lg font-medium tracking-[0.3em] uppercase text-stone-500 font-sans mt-2">
+            <p className="text-sm sm:text-base md:text-lg font-medium tracking-[0.3em] uppercase text-stone-500 font-sans mt-2 text-left">
               Balloons & Event Styling
             </p>
           </div>
 
           {/* Editorial Description & Action Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4 items-end">
-            <div className="lg:col-span-7">
-              <p className="text-lg sm:text-2xl text-stone-800 font-normal leading-relaxed max-w-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4 items-end text-left">
+            <div className="lg:col-span-7 text-left">
+              <p className="text-lg sm:text-2xl text-stone-800 font-normal leading-relaxed max-w-2xl text-left">
                 Creamos instalaciones orgánicas, bouquets personalizados y montajes de gran formato diseñados a mano para cada celebración.
               </p>
             </div>
@@ -61,39 +61,39 @@ export default function Hero({ onOpenQuote }) {
         </div>
 
         {/* Minimal Metrics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 sm:pt-16 mt-8 sm:mt-12 border-t border-stone-300/70">
-          <div>
-            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 sm:pt-16 mt-8 sm:mt-12 border-t border-stone-300/70 text-left">
+          <div className="text-left">
+            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950 text-left">
               1,200+
             </div>
-            <div className="text-xs text-stone-600 font-medium mt-0.5">
+            <div className="text-xs text-stone-600 font-medium mt-0.5 text-left">
               Eventos decorados
             </div>
           </div>
 
-          <div>
-            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950">
+          <div className="text-left">
+            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950 text-left">
               100%
             </div>
-            <div className="text-xs text-stone-600 font-medium mt-0.5">
+            <div className="text-xs text-stone-600 font-medium mt-0.5 text-left">
               Látex biodegradable
             </div>
           </div>
 
-          <div>
-            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950">
+          <div className="text-left">
+            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950 text-left">
               5 a 7 días
             </div>
-            <div className="text-xs text-stone-600 font-medium mt-0.5">
+            <div className="text-xs text-stone-600 font-medium mt-0.5 text-left">
               Flotación con Hi-Float
             </div>
           </div>
 
-          <div>
-            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950">
+          <div className="text-left">
+            <div className="font-display font-bold text-2xl sm:text-3xl text-charcoal-950 text-left">
               4.9 / 5
             </div>
-            <div className="text-xs text-stone-600 font-medium mt-0.5">
+            <div className="text-xs text-stone-600 font-medium mt-0.5 text-left">
               Calificación de clientes
             </div>
           </div>

@@ -5,7 +5,7 @@ import { MessageCircle, Check, Layers, Palette, Sparkles, Type, Calendar, Slider
 export default function BalloonCustomizer() {
   const [selectedStyle, setSelectedStyle] = useState(ARCH_STYLES[0]);
   const [selectedPalette, setSelectedPalette] = useState(COLOR_PALETTES[0]);
-  const [selectedSize, setSelectedSize] = useState('standard'); // standard (3.5m), large (4.5m), mega (6m)
+  const [selectedSize, setSelectedSize] = useState('standard');
   const [bubbleText, setBubbleText] = useState('Sofía & Alejandro');
   const [eventDate, setEventDate] = useState('');
   const [addFoliage, setAddFoliage] = useState(true);
@@ -17,7 +17,10 @@ export default function BalloonCustomizer() {
   // Base price calculation
   const getCalculatedPrice = () => {
     let base = 3400;
+    if (selectedStyle.id === 'techo-flotante') base = 6800;
     if (selectedStyle.id === 'backdrop-circular') base = 5200;
+    if (selectedStyle.id === 'muro-completo') base = 7900;
+    if (selectedStyle.id === 'columnas-duo') base = 3200;
     if (selectedStyle.id === 'guirnalda-mural') base = 2800;
     if (selectedStyle.id === 'bouquet-burbuja') base = 1350;
 
@@ -33,18 +36,18 @@ export default function BalloonCustomizer() {
 
   const generateWhatsAppLink = () => {
     const text = encodeURIComponent(
-      `Hola Chilpayate Balloons,\n\n` +
-      `Me gustaría cotizar este montaje personalizado:\n` +
+      `Hola Chilpayate Balloons Querétaro,\n\n` +
+      `Me gustaría cotizar este montaje personalizado para mi evento en Querétaro:\n` +
       `• Estructura: ${selectedStyle.name} (${selectedStyle.scale})\n` +
       `• Paleta de Color: ${selectedPalette.name}\n` +
-      `• Tamaño: ${selectedSize === 'large' ? 'Grande (+4.5m)' : selectedSize === 'mega' ? 'Monumental (+6.0m)' : 'Estándar (3.5m)'}\n` +
+      `• Tamaño: ${selectedSize === 'large' ? 'Grande' : selectedSize === 'mega' ? 'Monumental' : 'Estándar'}\n` +
       `• Follaje natural: ${addFoliage ? 'Sí' : 'No'}\n` +
       `• Letrero neón: ${addNeon ? 'Sí' : 'No'}\n` +
       `• Acentos en cromo: ${addChrome ? 'Sí' : 'No'}\n` +
       (isBubbleBouquet ? `• Texto en globo burbuja: "${bubbleText}"\n` : '') +
       `• Fecha del evento: ${eventDate || 'Por definir'}\n` +
       `• Estimado calculado: $${getCalculatedPrice().toLocaleString('es-MX')}\n\n` +
-      `¿Podrían confirmarme disponibilidad y detalles de instalación? Gracias.`
+      `¿Tienen disponibilidad de agenda en mi zona de Querétaro? Gracias.`
     );
     return `https://wa.me/5215555555555?text=${text}`;
   };
@@ -58,11 +61,11 @@ export default function BalloonCustomizer() {
     <section id="personalizador" className="pt-32 pb-24 relative bg-white border-t border-stone-200 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
-        {/* Section Header with generous clearance from navbar */}
+        {/* Section Header */}
         <div className="max-w-3xl space-y-3">
           <div className="flex items-center gap-2">
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-stone-500 font-sans">
-              Estudio Interactivo
+              Estudio Interactivo Querétaro
             </span>
             <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-stone-100 text-stone-700">
               Simulador en Tiempo Real
@@ -70,11 +73,11 @@ export default function BalloonCustomizer() {
           </div>
 
           <h2 className="font-display font-bold text-3xl sm:text-5xl text-charcoal-950 tracking-tight">
-            Configurador de Arcos y Arreglos
+            Configurador de Arcos y Montajes
           </h2>
 
           <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-            Personaliza el tipo de montaje, dimensiones, gama de color y complementos para tu espacio.
+            Personaliza el tipo de montaje, dimensiones, gama de color y complementos para tu evento en Querétaro.
           </p>
         </div>
 
@@ -95,8 +98,11 @@ export default function BalloonCustomizer() {
                 </span>
               </div>
 
-              {/* Dynamic SVG Balloon Rendering Canvas */}
-              <div className="relative w-full h-80 flex items-center justify-center my-auto z-10 select-none">
+              {/* Dynamic SVG Balloon Rendering Canvas with bounce-in pop animation */}
+              <div
+                key={`${selectedStyle.id}-${selectedPalette.id}`}
+                className="relative w-full h-80 flex items-center justify-center my-auto z-10 select-none animate-balloon-pop"
+              >
                 
                 <svg viewBox="0 0 400 360" className="w-full h-full max-h-80 drop-shadow-md">
                   <defs>
@@ -128,11 +134,9 @@ export default function BalloonCustomizer() {
                   {/* 1. ASYMMETRIC ORGANIC ARCH */}
                   {selectedStyle.id === 'arco-asimetrico' && (
                     <g>
-                      {/* Doorway / Portal frame guideline */}
                       <rect x="90" y="80" width="220" height="260" fill="none" stroke="#DCD6CC" strokeWidth="2" strokeDasharray="4 4" rx="8" />
                       <line x1="80" y1="340" x2="320" y2="340" stroke="#C4BCAE" strokeWidth="2" />
 
-                      {/* Left Column Dense Clusters */}
                       <circle cx="95" cy="315" r="28" fill="url(#dynC1)" />
                       <circle cx="80" cy="275" r="32" fill="url(#dynC2)" />
                       <circle cx="110" cy="265" r="24" fill="url(#dynC3)" />
@@ -141,7 +145,6 @@ export default function BalloonCustomizer() {
                       <circle cx="90" cy="170" r="34" fill="url(#dynC2)" />
                       <circle cx="118" cy="155" r="22" fill="url(#dynC3)" />
 
-                      {/* Arch Top Corner & Curve */}
                       <circle cx="105" cy="120" r="36" fill="url(#dynC1)" />
                       <circle cx="135" cy="95" r="32" fill="url(#dynC4)" />
                       <circle cx="170" cy="78" r="38" fill="url(#dynC2)" />
@@ -151,14 +154,12 @@ export default function BalloonCustomizer() {
                       <circle cx="305" cy="135" r="34" fill="url(#dynC2)" />
                       <circle cx="310" cy="180" r="28" fill="url(#dynC1)" />
 
-                      {/* Mini filler accent balloons */}
                       <circle cx="132" cy="140" r="12" fill="url(#dynC4)" />
                       <circle cx="190" cy="98" r="14" fill="url(#dynC3)" />
                       <circle cx="230" cy="102" r="13" fill="url(#dynC2)" />
                       <circle cx="270" cy="115" r="15" fill="url(#dynC1)" />
                       <circle cx="295" cy="160" r="12" fill="url(#dynC3)" />
 
-                      {/* Optional Botanical Foliage Accents */}
                       {addFoliage && (
                         <g stroke="#648A71" strokeWidth="2" fill="none">
                           <path d="M75 220 Q 55 210 50 195" />
@@ -172,15 +173,43 @@ export default function BalloonCustomizer() {
                     </g>
                   )}
 
-                  {/* 2. CIRCULAR PHOTOWALL BACKDROP */}
+                  {/* 2. SUSPENDED CEILING / LLUVIA FLOTANTE */}
+                  {selectedStyle.id === 'techo-flotante' && (
+                    <g>
+                      <line x1="40" y1="60" x2="360" y2="60" stroke="#B59E83" strokeWidth="2" />
+                      <text x="200" y="48" textAnchor="middle" fill="#786F66" fontSize="10" fontWeight="bold">PLAFÓN / VIGAS DEL TECHO</text>
+                      
+                      {/* Suspended Organic Cloud of multi-sized balloons */}
+                      <circle cx="70" cy="95" r="26" fill="url(#dynC1)" />
+                      <circle cx="110" cy="85" r="34" fill="url(#dynC2)" />
+                      <circle cx="150" cy="100" r="38" fill="url(#dynC3)" />
+                      <circle cx="195" cy="80" r="42" fill="url(#dynC4)" />
+                      <circle cx="245" cy="95" r="36" fill="url(#dynC1)" />
+                      <circle cx="290" cy="85" r="32" fill="url(#dynC2)" />
+                      <circle cx="330" cy="100" r="28" fill="url(#dynC3)" />
+
+                      {/* Second layer dropping down */}
+                      <circle cx="95" cy="135" r="32" fill="url(#dynC4)" />
+                      <circle cx="140" cy="145" r="36" fill="url(#dynC1)" />
+                      <circle cx="185" cy="130" r="40" fill="url(#dynC2)" />
+                      <circle cx="230" cy="140" r="34" fill="url(#dynC3)" />
+                      <circle cx="275" cy="130" r="30" fill="url(#dynC4)" />
+                      <circle cx="315" cy="140" r="24" fill="url(#dynC1)" />
+
+                      {/* Dangling drop accents */}
+                      <circle cx="160" cy="190" r="22" fill="url(#dynC2)" />
+                      <circle cx="210" cy="195" r="26" fill="url(#dynC1)" />
+                      <circle cx="260" cy="180" r="20" fill="url(#dynC3)" />
+                    </g>
+                  )}
+
+                  {/* 3. CIRCULAR PHOTOWALL BACKDROP */}
                   {selectedStyle.id === 'backdrop-circular' && (
                     <g>
-                      {/* Golden Metal Ring */}
                       <circle cx="200" cy="170" r="120" fill="none" stroke="#DFB77D" strokeWidth="4" />
                       <line x1="150" y1="280" x2="150" y2="330" stroke="#B59E83" strokeWidth="3" />
                       <line x1="250" y1="280" x2="250" y2="330" stroke="#B59E83" strokeWidth="3" />
 
-                      {/* Crescent Organic Clusters on Left & Top */}
                       <circle cx="105" cy="225" r="36" fill="url(#dynC1)" />
                       <circle cx="90" cy="175" r="40" fill="url(#dynC2)" />
                       <circle cx="105" cy="125" r="34" fill="url(#dynC3)" />
@@ -189,12 +218,10 @@ export default function BalloonCustomizer() {
                       <circle cx="230" cy="65" r="32" fill="url(#dynC2)" />
                       <circle cx="275" cy="85" r="28" fill="url(#dynC3)" />
 
-                      {/* Mini Accents */}
                       <circle cx="120" cy="160" r="14" fill="url(#dynC4)" />
                       <circle cx="140" cy="120" r="15" fill="url(#dynC1)" />
                       <circle cx="165" cy="90" r="13" fill="url(#dynC2)" />
 
-                      {/* Center Neon Text representation */}
                       <rect x="155" y="160" width="120" height="38" rx="8" fill="#1A191D" stroke="#DFB77D" strokeWidth="1.5" />
                       <text x="215" y="184" textAnchor="middle" fill="#FAF8F5" fontSize="12" fontWeight="bold" fontFamily="sans-serif">
                         {addNeon ? 'Letrero Neón' : 'Photocall'}
@@ -202,12 +229,52 @@ export default function BalloonCustomizer() {
                     </g>
                   )}
 
-                  {/* 3. WALL GUIRNALDA */}
+                  {/* 4. FULL BALLOON WALL */}
+                  {selectedStyle.id === 'muro-completo' && (
+                    <g>
+                      <rect x="50" y="70" width="300" height="240" fill="#EAE5DC" rx="6" stroke="#C4BCAE" strokeWidth="1.5" />
+                      
+                      {/* Grid of high density interlaced organic balloons */}
+                      {[...Array(5)].map((_, row) =>
+                        [...Array(6)].map((_, col) => {
+                          const cx = 80 + col * 48 + (row % 2 === 0 ? 0 : 12);
+                          const cy = 95 + row * 45;
+                          const r = 24 + ((col + row) % 3) * 3;
+                          const fillId = (col + row) % 4 === 0 ? 'url(#dynC1)' : (col + row) % 4 === 1 ? 'url(#dynC2)' : (col + row) % 4 === 2 ? 'url(#dynC3)' : 'url(#dynC4)';
+                          return <circle key={`${row}-${col}`} cx={cx} cy={cy} r={r} fill={fillId} />;
+                        })
+                      )}
+                    </g>
+                  )}
+
+                  {/* 5. DUO ORGANIC COLUMNS */}
+                  {selectedStyle.id === 'columnas-duo' && (
+                    <g>
+                      {/* Left Column */}
+                      <rect x="80" y="325" width="60" height="10" rx="3" fill="#1A191D" />
+                      <circle cx="110" cy="305" r="26" fill="url(#dynC1)" />
+                      <circle cx="110" cy="265" r="28" fill="url(#dynC2)" />
+                      <circle cx="110" cy="225" r="26" fill="url(#dynC3)" />
+                      <circle cx="110" cy="185" r="28" fill="url(#dynC4)" />
+                      <circle cx="110" cy="145" r="26" fill="url(#dynC1)" />
+                      <circle cx="110" cy="105" r="32" fill="url(#dynC2)" />
+
+                      {/* Right Column */}
+                      <rect x="260" y="325" width="60" height="10" rx="3" fill="#1A191D" />
+                      <circle cx="290" cy="305" r="26" fill="url(#dynC3)" />
+                      <circle cx="290" cy="265" r="28" fill="url(#dynC4)" />
+                      <circle cx="290" cy="225" r="26" fill="url(#dynC1)" />
+                      <circle cx="290" cy="185" r="28" fill="url(#dynC2)" />
+                      <circle cx="290" cy="145" r="26" fill="url(#dynC3)" />
+                      <circle cx="290" cy="105" r="32" fill="url(#dynC4)" />
+                    </g>
+                  )}
+
+                  {/* 6. WALL GUIRNALDA */}
                   {selectedStyle.id === 'guirnalda-mural' && (
                     <g>
                       <line x1="40" y1="180" x2="360" y2="180" stroke="#DCD6CC" strokeWidth="2" strokeDasharray="4 4" />
                       
-                      {/* Flowing horizontal organic garland */}
                       <circle cx="70" cy="160" r="26" fill="url(#dynC1)" />
                       <circle cx="110" cy="150" r="38" fill="url(#dynC2)" />
                       <circle cx="155" cy="165" r="36" fill="url(#dynC3)" />
@@ -223,23 +290,18 @@ export default function BalloonCustomizer() {
                     </g>
                   )}
 
-                  {/* 4. BUBBLE BOUQUET */}
+                  {/* 7. BUBBLE BOUQUET */}
                   {selectedStyle.id === 'bouquet-burbuja' && (
                     <g>
-                      {/* Helium Strings */}
                       <path d="M200 155 Q 195 240 200 315" stroke="#B59E83" strokeWidth="1.5" fill="none" />
-                      
-                      {/* Base weight */}
                       <rect x="185" y="315" width="30" height="15" rx="3" fill="#DFD3C2" stroke="#B59E83" />
 
-                      {/* Helium cluster under */}
                       <circle cx="175" cy="185" r="26" fill="url(#dynC2)" />
                       <circle cx="225" cy="185" r="26" fill="url(#dynC4)" />
                       <circle cx="200" cy="205" r="24" fill="url(#dynC3)" />
                       <circle cx="180" cy="225" r="22" fill="url(#dynC1)" />
                       <circle cx="220" cy="225" r="22" fill="url(#dynC2)" />
 
-                      {/* Jumbo Bubble Sphere with custom calligraphy text */}
                       <circle cx="200" cy="95" r="60" fill="#FAF8F5" fillOpacity="0.88" stroke="#FFFFFF" strokeWidth="3" />
                       <ellipse cx="175" cy="70" rx="14" ry="22" fill="#FFFFFF" fillOpacity="0.65" transform="rotate(-30 175 70)" />
                       
@@ -247,7 +309,7 @@ export default function BalloonCustomizer() {
                         {bubbleText || 'Dedicatoria'}
                       </text>
                       <text x="200" y="115" textAnchor="middle" fill="#786F66" fontSize="9" fontWeight="medium" fontFamily="sans-serif">
-                        Chilpayate Studio
+                        Querétaro
                       </text>
                     </g>
                   )}
@@ -291,7 +353,7 @@ export default function BalloonCustomizer() {
                     <button
                       key={style.id}
                       onClick={() => setSelectedStyle(style)}
-                      className={`p-4 rounded-xl border text-left transition flex flex-col justify-between gap-2 ${
+                      className={`p-3.5 rounded-xl border text-left transition flex flex-col justify-between gap-1.5 ${
                         isSelected
                           ? 'bg-stone-50 border-charcoal-950 ring-2 ring-charcoal-950 shadow-xs'
                           : 'bg-white border-stone-300 hover:bg-stone-50'
@@ -463,7 +525,7 @@ export default function BalloonCustomizer() {
             <div className="space-y-2">
               <label className="text-xs uppercase font-bold tracking-wider text-stone-800 flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-stone-800" />
-                <span>5. Fecha del Evento</span>
+                <span>5. Fecha del Evento en Querétaro</span>
               </label>
               <input
                 type="date"
@@ -483,7 +545,7 @@ export default function BalloonCustomizer() {
                   ${getCalculatedPrice().toLocaleString('es-MX')}
                 </span>
                 <span className="text-[11px] text-stone-500 block">
-                  Incluye calibración y montaje en tu locación
+                  Incluye calibración y montaje en Querétaro
                 </span>
               </div>
 
@@ -494,7 +556,7 @@ export default function BalloonCustomizer() {
                 className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 transition flex items-center justify-center gap-2 shadow-md whitespace-nowrap"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Cotizar esta configuración</span>
+                <span>Cotizar para Querétaro</span>
               </a>
             </div>
 

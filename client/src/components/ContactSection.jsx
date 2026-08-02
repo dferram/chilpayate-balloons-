@@ -19,16 +19,16 @@ export default function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Hola Chilpayate Balloons,\n\n` +
-      `Me gustaría solicitar una cotización para un evento:\n` +
+      `Hola Chilpayate Balloons Querétaro,\n\n` +
+      `Me gustaría solicitar una cotización para un evento en Querétaro:\n` +
       `• Nombre: ${formData.name}\n` +
       `• Teléfono: ${formData.phone}\n` +
       `• Tipo de Evento: ${formData.eventType}\n` +
       `• Fecha: ${formData.date || 'Por confirmar'}\n` +
-      `• Ubicación: ${formData.location || 'CDMX'}\n` +
+      `• Zona/Colonia en QRO: ${formData.location || 'Querétaro'}\n` +
       `• Rango de Presupuesto: ${formData.budget}\n` +
       `• Detalles: ${formData.notes || 'Ninguno adicional'}\n\n` +
-      `Quedo atento a su respuesta.`
+      `Quedo atento a su respuesta para agendar.`
     );
 
     try {
@@ -52,13 +52,13 @@ export default function ContactSection() {
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-2">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-500 font-sans block">
-                Contacto Directo
+                Contacto Directo Querétaro
               </span>
               <h2 className="font-display font-bold text-3xl sm:text-5xl text-charcoal-950 tracking-tight">
-                Cotiza tu Evento
+                Cotiza tu Montaje
               </h2>
               <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-                Cuéntanos sobre tu celebración y prepararemos una propuesta personalizada y presupuesto detallado.
+                Cuéntanos sobre tu celebración y prepararemos una propuesta personalizada y presupuesto detallado para tu locación en Querétaro.
               </p>
             </div>
 
@@ -67,15 +67,15 @@ export default function ContactSection() {
                 <Phone className="w-4 h-4 text-stone-700" />
                 <div>
                   <span className="text-[11px] text-stone-500 block">WhatsApp y Atención</span>
-                  <span className="font-semibold text-xs text-charcoal-950">+52 (55) 5555-5555</span>
+                  <span className="font-semibold text-xs text-charcoal-950">+52 (442) 555-5555</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 p-4 rounded-xl bg-[#F9F7F4] border border-stone-200">
                 <MapPin className="w-4 h-4 text-stone-700" />
                 <div>
-                  <span className="text-[11px] text-stone-500 block">Cobertura de Entrega</span>
-                  <span className="font-semibold text-xs text-charcoal-950">Ciudad de México y Área Metropolitana</span>
+                  <span className="text-[11px] text-stone-500 block">Cobertura de Instalación</span>
+                  <span className="font-semibold text-xs text-charcoal-950">Santiago de Querétaro, Juriquilla, El Campanario y Zibatá</span>
                 </div>
               </div>
 
@@ -138,11 +138,12 @@ export default function ContactSection() {
                       className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     >
                       <option value="Cumpleaños">Cumpleaños</option>
-                      <option value="Boda">Boda</option>
+                      <option value="Boda en Hacienda">Boda en Hacienda / Jardín</option>
                       <option value="Baby Shower / Revelación">Baby Shower / Revelación</option>
                       <option value="Aniversario">Aniversario</option>
                       <option value="Graduación">Graduación</option>
-                      <option value="Corporativo">Evento Corporativo</option>
+                      <option value="Inauguración Comercial">Inauguración / Corporativo</option>
+                      <option value="15 de Septiembre">Noche Mexicana 15 Sep</option>
                       <option value="Otro">Otro</option>
                     </select>
                   </div>
@@ -164,12 +165,12 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
-                      Zona o Colonia
+                      Zona o Fraccionamiento en QRO
                     </label>
                     <input
                       type="text"
                       name="location"
-                      placeholder="Ej. Polanco, Roma, Naucalpan"
+                      placeholder="Ej. Juriquilla, El Campanario, Zibatá"
                       value={formData.location}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
@@ -186,10 +187,10 @@ export default function ContactSection() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     >
-                      <option value="Básico ($800 - $1,500)">Bouquet individual ($800 - $1,500)</option>
-                      <option value="Medio ($1,500 - $3,500)">Composición media ($1,500 - $3,500)</option>
-                      <option value="Completo ($3,500 - $7,000)">Arco orgánico ($3,500 - $7,000)</option>
-                      <option value="Escenografía (+$7,000)">Escenografía completa (+$7,000)</option>
+                      <option value="Básico ($1,350 - $2,800)">Bouquet / Guirnalda ($1,350 - $2,800)</option>
+                      <option value="Medio ($3,400 - $5,500)">Arco orgánico / Backdrop ($3,400 - $5,500)</option>
+                      <option value="Monumental ($6,500 - $9,500)">Techo / Muro completo ($6,500 - $9,500)</option>
+                      <option value="Escenografía Completa (+$10,000)">Escenografía completa (+$10,000)</option>
                     </select>
                   </div>
                 </div>
@@ -201,7 +202,7 @@ export default function ContactSection() {
                   <textarea
                     rows={3}
                     name="notes"
-                    placeholder="Colores, temática o requerimientos de instalación..."
+                    placeholder="Paleta de color deseada, temática o especificaciones del lugar..."
                     value={formData.notes}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950 resize-none"
