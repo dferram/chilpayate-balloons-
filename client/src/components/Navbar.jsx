@@ -15,7 +15,8 @@ export default function Navbar({ onOpenQuote }) {
 
   const navLinks = [
     { label: 'Colección', href: '#catalogo' },
-    { label: 'Personalizador', href: '#personalizador' },
+    { label: 'Temporada 15 Sep', href: '#temporada' },
+    { label: 'Simulador de Arcos', href: '#personalizador' },
     { label: 'Servicios', href: '#servicios' },
     { label: 'Proceso', href: '#proceso' },
     { label: 'Opiniones', href: '#testimonios' },
@@ -47,12 +48,16 @@ export default function Navbar({ onOpenQuote }) {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-xs uppercase tracking-wider font-semibold text-stone-700 hover:text-charcoal-950 transition-colors py-1"
+              className={`text-xs uppercase tracking-wider font-semibold transition-colors py-1 ${
+                link.label === 'Temporada 15 Sep'
+                  ? 'text-stone-950 font-bold border-b border-stone-800'
+                  : 'text-stone-700 hover:text-charcoal-950'
+              }`}
             >
               {link.label}
             </a>

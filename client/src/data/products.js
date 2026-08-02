@@ -1,111 +1,221 @@
 export const CATEGORIES = [
-  { id: 'all', label: 'Todos', count: 12 },
-  { id: 'bouquets', label: 'Bouquets de Helio', count: 4 },
-  { id: 'arcos', label: 'Arcos y Guirnaldas', count: 3 },
-  { id: 'cajas', label: 'Cajas de Regalo', count: 3 },
-  { id: 'gigantes', label: 'Números y Letras', count: 2 },
+  { id: 'all', label: 'Todos los Trabajos', count: 12 },
+  { id: 'arcos', label: 'Arcos y Guirnaldas', count: 5 },
+  { id: 'backdrops', label: 'Backdrops y Muros', count: 3 },
+  { id: 'bouquets', label: 'Bouquets y Burbujas', count: 2 },
+  { id: 'gigantes', label: 'Números Monumentales', count: 2 },
+];
+
+export const SEASONAL_PATRIO = {
+  seasonName: 'Temporada: Fiestas Patrias',
+  subtitle: 'Edición Limitada 15 de Septiembre',
+  description: 'Composiciones orgánicas y montajes de gran formato diseñados para cenas patrias, eventos corporativos y celebraciones de la Noche Mexicana.',
+  designs: [
+    {
+      id: 'arco-patrio-monumental',
+      title: 'Arco Monumental Tricolor Orgánico',
+      type: 'Arco Orgánico Asimétrico',
+      dimensions: '4.0m de longitud',
+      price: 3950,
+      description: 'Diseño volumétrico con globos látex en verde bandera mate, blanco nácar y rojo carmín intenso, acentuado con esferas cromo dorado y follaje verde.',
+      image: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=900&q=80',
+      tag: 'Más Solicitado para 15 Sep',
+      includes: [
+        'Estructura autoportante de 4 metros',
+        'Globos de 5", 11", 18" y 24" calibrados a mano',
+        'Montaje e instalación en la locación del evento',
+        'Detalles en cromo oro y follaje decorativo'
+      ]
+    },
+    {
+      id: 'backdrop-patrio-circular',
+      title: 'Backdrop Noche Mexicana',
+      type: 'Backdrop Circular con Aro',
+      dimensions: '2.0m diámetro x 2.2m alto',
+      price: 5400,
+      description: 'Estructura circular de aro dorado con media luna de globos orgánicos tricolores, letrero neón cálido y soporte para photocall patrio.',
+      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80',
+      tag: 'Ideal para Fotos',
+      includes: [
+        'Renta de aro monumental dorado',
+        'Guirnalda orgánica volumétrica de 3.2m',
+        'Letrero neón a elegir (Viva México / Celebración)',
+        'Montaje y retiro al finalizar el evento'
+      ]
+    },
+    {
+      id: 'bouquet-patrio-gala',
+      title: 'Bouquet Patrio Gala con Burbuja',
+      type: 'Bouquet de Helio',
+      dimensions: '1.90m de altura',
+      price: 1450,
+      description: 'Globo burbuja de 24 pulgadas personalizado con caligrafía patrio-dorada y racimo de 8 globos de látex helio en gama tricolor contemporánea.',
+      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
+      tag: 'Entrega a Domicilio',
+      includes: [
+        'Globo burbuja 24" con texto personalizado',
+        '8 globos helio látex con tratamiento Hi-Float',
+        'Base con peso forrado y listón de seda tricolor',
+        'Tarjeta de dedicatoria'
+      ]
+    }
+  ]
+};
+
+export const ARCH_STYLES = [
+  {
+    id: 'arco-asimetrico',
+    name: 'Arco Orgánico Asimétrico',
+    subtitle: 'Para entradas, escaleras o marcos de puertas',
+    scale: '3.5 a 4.5 metros',
+    idealFor: 'Entradas principales, inauguraciones y fondos principales'
+  },
+  {
+    id: 'backdrop-circular',
+    name: 'Backdrop Circular Photowall',
+    subtitle: 'Estructura de aro con media luna volumétrica',
+    scale: '2.0 metros de diámetro',
+    idealFor: 'Área de fotografías, mesas de pastel y bodas'
+  },
+  {
+    id: 'guirnalda-mural',
+    name: 'Guirnalda Mural Flotante',
+    subtitle: 'Instalación continua sobre pared o barandal',
+    scale: '2.5 a 3.0 metros',
+    idealFor: 'Mesas de honor, mamparas y terrazas'
+  },
+  {
+    id: 'bouquet-burbuja',
+    name: 'Bouquet con Globo Burbuja',
+    subtitle: 'Composición flotante con helio para regalo o mesa',
+    scale: '1.90 metros de altura',
+    idealFor: 'Centros de mesa, esquinas de salón y regalos personalizados'
+  }
 ];
 
 export const COLOR_PALETTES = [
   {
     id: 'champagne-luxury',
-    name: 'Champagne y Oro Rosa',
-    colors: ['#F5E3C7', '#E8A8A8', '#DFB77D', '#FAF6EE'],
-    description: 'Tonos cálidos y románticos para bodas y aniversarios.'
+    name: 'Champagne, Arena y Blanco',
+    colors: ['#EDE6D6', '#DFD3C2', '#FFFFFF', '#CBB897'],
+    description: 'Elegancia sobria y neutra para bodas y aniversarios.'
   },
   {
     id: 'eucalyptus-sage',
-    name: 'Eucalipto y Arena Mate',
-    colors: ['#84AC91', '#E4DAC2', '#FFFFFF', '#CFA058'],
-    description: 'Gama orgánica contemporánea para eventos estilo natural.'
+    name: 'Eucalipto, Olivo y Nude',
+    colors: ['#84AC91', '#62836E', '#EAE1D2', '#FFFFFF'],
+    description: 'Tonos botánicos orgánicos para jardines y baby showers.'
   },
   {
-    id: 'midnight-gold',
-    name: 'Negro Mate y Cromo',
-    colors: ['#1A191D', '#DFB77D', '#EFE7D2', '#B08038'],
-    description: 'Contraste sobrio para graduaciones y eventos corporativos.'
-  },
-  {
-    id: 'cotton-candy',
-    name: 'Pastel y Lila',
-    colors: ['#F9D5D7', '#D5E1DF', '#E8DFF5', '#FDFBF7'],
-    description: 'Colores suaves para bautizos y cumpleaños infantiles.'
+    id: 'patrio-mexico',
+    name: 'Tricolor Patrio (Verde, Blanco, Carmín)',
+    colors: ['#1C5435', '#F5F5F0', '#9E2432', '#CBA358'],
+    description: 'Gama mexicana contemporánea para el 15 de Septiembre.'
   },
   {
     id: 'terracotta-sunset',
-    name: 'Terracota y Nude',
-    colors: ['#DF7861', '#F5E3C7', '#D3C4AF', '#FAF0E2'],
-    description: 'Tonos tierra cálidos con acabado mate.'
+    name: 'Terracota, Barro y Crema',
+    colors: ['#BD5741', '#E5A99B', '#F5EFE6', '#7A3828'],
+    description: 'Estética cálida y artesanal para interiores contemporáneos.'
+  },
+  {
+    id: 'midnight-gold',
+    name: 'Negro Mate, Blanco y Cromo',
+    colors: ['#1A191C', '#FFFFFF', '#DECDB8', '#9B8E7B'],
+    description: 'Contraste arquitectónico para galas y marcas.'
   }
 ];
 
 export const PRODUCTS = [
   {
-    id: 'bouquet-aurora-gold',
-    name: 'Bouquet Aurora Gold',
-    category: 'bouquets',
-    tag: 'Destacado',
-    price: 1350,
-    originalPrice: 1550,
-    rating: 4.9,
-    reviewsCount: 48,
-    badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Bouquet flotante con globo burbuja cristalino de 24 pulgadas personalizado con caligrafía artesanal y racimo de 8 globos látex en tonos champagne, blush y arena.',
-    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#DFB77D',
-    dimensions: 'Alto: 1.90m x Ancho: 85cm',
-    durability: 'Helio con tratamiento Hi-Float (4 a 7 días)',
-    includes: [
-      'Globo burbuja de 24" con caligrafía personalizada a mano',
-      '8 globos látex en tonos coordinados con helio puro',
-      'Base con contrapeso forrada en lino',
-      'Cinta de seda y tarjeta para dedicatoria'
-    ],
-    occasions: ['Cumpleaños', 'Aniversario', 'Graduación']
-  },
-  {
     id: 'arco-organico-botanico',
-    name: 'Arco Orgánico Botánico',
+    name: 'Arco Orgánico Botánico Asimétrico',
     category: 'arcos',
-    tag: 'Exclusivo',
+    tag: 'Arco de Gran Formato',
     price: 3400,
     originalPrice: 3800,
     rating: 5.0,
     reviewsCount: 36,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Composición asimétrica con globos de distintos calibres en acabado mate aterciopelado, complementada con follaje de eucalipto natural preservado.',
+    description: 'Estructura asimétrica orgánica con globos látex de múltiples calibres (5", 11", 18" y 24") en acabado mate con follaje de eucalipto preservado.',
     image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=80',
     accentColor: '#84AC91',
-    dimensions: 'Largo: 3.5 metros (adaptable al espacio)',
+    dimensions: 'Longitud: 3.5 metros adaptables',
     durability: 'Duración de 2 a 3 semanas en interior',
     includes: [
-      'Estructura autoportante segura para interiores y exteriores',
-      'Más de 140 globos biodegradables de látex natural',
-      'Follaje de eucalipto natural integrado',
-      'Instalación completa en el lugar del evento'
+      'Estructura y fijación autoportante sin perforaciones',
+      'Más de 140 globos biodegradables de látex calibrado',
+      'Ramas de eucalipto natural preservado',
+      'Instalación profesional completa en tu locación'
     ],
-    occasions: ['Boda', 'Baby Shower', 'Bautizo', 'Apertura']
+    occasions: ['Boda', 'Baby Shower', 'Bautizo', 'Inauguración']
   },
   {
-    id: 'caja-luxury-noir',
-    name: 'Caja Cilíndrica Velvet y Bubble',
-    category: 'cajas',
-    tag: 'Regalo',
-    price: 1190,
-    originalPrice: null,
-    rating: 4.95,
-    reviewsCount: 62,
+    id: 'backdrop-gala-sequin',
+    name: 'Backdrop Circular Photowall',
+    category: 'backdrops',
+    tag: 'Estructura Completa',
+    price: 5200,
+    originalPrice: 5900,
+    rating: 5.0,
+    reviewsCount: 19,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Caja cilíndrica forrada en terciopelo artesanal con mini rosas preservadas y globo esfera transparente con helio y mensaje en vinil mate.',
-    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#E68A91',
-    dimensions: 'Alto: 1.10m total (Caja 22cm x 20cm)',
-    durability: 'Globo con helio (5 a 8 días)',
+    description: 'Aro dorado monumental de 2 metros con media luna volumétrica de globos orgánicos, letrero neón personalizado y acentos florales.',
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80',
+    accentColor: '#DF7861',
+    dimensions: 'Diámetro: 2.00m x Altura total: 2.20m',
+    durability: 'Montaje para el día del evento',
     includes: [
-      'Caja rígida forrada en velvet',
-      'Globo esfera transparente con dedicatoria',
-      'Rosas preservadas o chocolates finos a elección',
-      'Moño de satín a juego'
+      'Estructura de aro dorado en renta',
+      'Guirnalda orgánica de 3.2 metros de desarrollo',
+      'Letrero neón a elección (Better Together / Happy Birthday)',
+      'Transporte, montaje y desmontaje incluidos'
+    ],
+    occasions: ['Bodas', 'Graduaciones', 'XV Años', 'Galas']
+  },
+  {
+    id: 'guirnalda-organica-mural',
+    name: 'Guirnalda Orgánica Mural',
+    category: 'arcos',
+    tag: 'Montaje en Muro',
+    price: 2800,
+    originalPrice: 3100,
+    rating: 4.95,
+    reviewsCount: 28,
+    badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
+    description: 'Instalación continua diseñada para fijarse sobre muros, mamparas o detrás de la mesa principal en paleta cromática personalizada.',
+    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80',
+    accentColor: '#DFB77D',
+    dimensions: 'Longitud: 3.0 metros',
+    durability: 'Duración de 2 a 3 semanas',
+    includes: [
+      'Montaje con fijaciones invisibles que cuidan las paredes',
+      'Globos mate y satinados en 4 calibres',
+      'Detalles de follaje botánico opcional',
+      'Instalación por estilistas de globos'
+    ],
+    occasions: ['Cumpleaños', 'Bautizo', 'Baby Shower']
+  },
+  {
+    id: 'bouquet-aurora-gold',
+    name: 'Bouquet con Globo Burbuja Personalizado',
+    category: 'bouquets',
+    tag: 'Detalle con Helio',
+    price: 1350,
+    originalPrice: 1550,
+    rating: 4.9,
+    reviewsCount: 48,
+    badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
+    description: 'Globo burbuja transparente de 24 pulgadas personalizado con caligrafía artesanal y racimo de 8 globos látex con helio Hi-Float.',
+    image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80',
+    accentColor: '#DFB77D',
+    dimensions: 'Alto: 1.90m x Ancho: 85cm',
+    durability: 'Helio con tratamiento Hi-Float (4 a 7 días)',
+    includes: [
+      'Globo burbuja de 24" con caligrafía en vinil',
+      '8 globos látex coordinados con helio puro',
+      'Base con peso forrado en lino',
+      'Cinta de tela y tarjeta'
     ],
     occasions: ['Cumpleaños', 'Aniversario', 'Agradecimiento']
   },
@@ -113,115 +223,47 @@ export const PRODUCTS = [
     id: 'jumbo-numero-3d',
     name: 'Números Gigantes sobre Base Orgánica',
     category: 'gigantes',
-    tag: 'Personalizado',
+    tag: 'Montaje 3D',
     price: 1850,
     originalPrice: 2100,
     rating: 4.88,
     reviewsCount: 29,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Dos números gigantes de 102cm en tono cromo montados sobre una base orgánica de globos mate con detalles botánicos.',
+    description: 'Dos números gigantes foil de 102cm montados sobre base orgánica multicapa con minimotivos y acabado mate.',
     image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80',
     accentColor: '#B08038',
     dimensions: 'Alto: 1.60m x Ancho: 1.20m',
-    durability: 'Duración de 10 a 15 días en interior',
+    durability: '10 a 15 días en interior',
     includes: [
       '2 Números gigantes de 40 pulgadas',
-      'Base orgánica multicapa de látex calibrado',
-      'Detalles botánicos y mini esferas decorativas',
+      'Base orgánica de látex calibrado',
+      'Detalles botánicos y mini esferas',
       'Tarjeta personalizada'
     ],
-    occasions: ['Cumpleaños', 'Aniversario de Empresa']
+    occasions: ['Cumpleaños', 'Aniversarios']
   },
   {
-    id: 'backdrop-gala-sequin',
-    name: 'Backdrop Circular con Guirnalda',
+    id: 'arco-patrio-monumental-cat',
+    name: 'Arco Monumental 15 de Septiembre',
     category: 'arcos',
-    tag: 'Eventos',
-    price: 5200,
-    originalPrice: 5900,
+    tag: 'Edición Fiestas Patrias',
+    price: 3950,
+    originalPrice: 4400,
     rating: 5.0,
-    reviewsCount: 19,
+    reviewsCount: 15,
     badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Estructura circular de 2 metros de diámetro con media luna de globos orgánicos en gama cálida, letrero neón y flores de acento.',
-    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#DF7861',
-    dimensions: 'Diámetro: 2.00m x Altura: 2.20m',
-    durability: 'Montaje para el día del evento',
-    includes: [
-      'Estructura de aro en renta',
-      'Guirnalda orgánica de 3.2 metros',
-      'Letrero neón a elección',
-      'Montaje y desmontaje incluidos'
-    ],
-    occasions: ['Bodas', 'Graduaciones', 'XV Años']
-  },
-  {
-    id: 'bouquet-gender-reveal',
-    name: 'Globo Jumbo de Revelación',
-    category: 'bouquets',
-    tag: 'Especial',
-    price: 1650,
-    originalPrice: null,
-    rating: 4.97,
-    reviewsCount: 41,
-    badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Globo negro opaco de 36 pulgadas con helio, relleno de polvos holi y confeti especial, acompañado de racimos laterales.',
-    image: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#AECBB7',
-    dimensions: 'Alto: 2.20m x Ancho: 1.00m',
-    durability: 'Preparado para el momento de la revelación',
-    includes: [
-      'Globo jumbo 36" opaco con confeti y polvo revelador',
-      'Herramienta decorada para el pop',
-      '6 globos de helio complementarios',
-      'Guirnalda de borlas de tela'
-    ],
-    occasions: ['Revelación de Género', 'Baby Shower']
-  },
-  {
-    id: 'caja-sorpresa-vuelo',
-    name: 'Caja con Globos Flotantes',
-    category: 'cajas',
-    tag: 'Sorpresa',
-    price: 1450,
-    originalPrice: 1650,
-    rating: 4.92,
-    reviewsCount: 33,
-    badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Al abrir la tapa de la caja rígida, 4 globos de helio con fotos impresas y dedicatorias se elevan suavemente.',
-    image: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#E68A91',
-    dimensions: 'Caja: 60x60x60 cm',
-    durability: 'Elevación inmediata al destapar',
-    includes: [
-      'Caja rígida con listón de satín',
-      '4 globos de helio en tonos suaves',
-      '6 fotografías impresas sujetas a las cintas',
-      'Dedicatoria personalizada'
-    ],
-    occasions: ['Cumpleaños', 'Aniversario', 'Día de las Madres']
-  },
-  {
-    id: 'bouquet-minimal-pearl',
-    name: 'Bouquet Minimalista Perla',
-    category: 'bouquets',
-    tag: 'Clásico',
-    price: 1100,
-    originalPrice: null,
-    rating: 4.85,
-    reviewsCount: 22,
-    badgeColor: 'bg-stone-100 text-stone-800 border-stone-300',
-    description: 'Composición sobria de globos perlados translúcidos con toques satinados y cinta de organza.',
+    description: 'Arco orgánico asimétrico de 4 metros en paleta tricolor mate contemporánea para noche mexicana y recepciones.',
     image: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#D3C4AF',
-    dimensions: 'Alto: 1.80m',
-    durability: '5 a 7 días de flotación garantizada',
+    accentColor: '#1C5435',
+    dimensions: 'Longitud: 4.0 metros',
+    durability: 'Instalación para eventos patrios',
     includes: [
-      '7 globos látex perlados con helio',
-      '2 globos orbe esféricos',
-      'Base con peso forrado y cinta de tela'
+      'Estructura de soporte seguro',
+      'Composición tricolor con acentos dorados',
+      'Montaje en locación en CDMX y Edomex',
+      'Retiro opcional'
     ],
-    occasions: ['Bautizo', 'Primera Comunión', 'Cena']
+    occasions: ['15 de Septiembre', 'Noche Mexicana', 'Corporativo Patrio']
   }
 ];
 
@@ -229,17 +271,17 @@ export const TESTIMONIALS = [
   {
     id: 1,
     name: 'Valeria Mendiola',
-    role: 'Cumpleaños',
-    comment: 'El arreglo Aurora Gold llegó puntual y duró impecable más de una semana. La caligrafía en el globo le dio un toque muy personal y elegante.',
+    role: 'Cumpleaños 30',
+    comment: 'Contratamos el arco orgánico para la entrada y un bouquet de burbuja para la mesa principal. El montaje fue puntualísimo y la armonía de colores fue impecable.',
     rating: 5,
-    event: 'Bouquet Aurora Gold',
+    event: 'Arco Orgánico Asimétrico',
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80'
   },
   {
     id: 2,
     name: 'Rodrigo y Sofía',
-    role: 'Boda',
-    comment: 'Montaron el arco orgánico en la terraza de nuestro evento. El balance de colores con el eucalipto natural fue exactamente lo que habíamos pedido.',
+    role: 'Boda en Jardín',
+    comment: 'El arco botánico con eucalipto natural fue el fondo perfecto para la ceremonia. La calidad del látex mate se vio increíble en las fotos sin reflejos molestos.',
     rating: 5,
     event: 'Arco Orgánico Botánico',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'
@@ -247,29 +289,29 @@ export const TESTIMONIALS = [
   {
     id: 3,
     name: 'Mariana Casas',
-    role: 'Baby Shower',
-    comment: 'La atención por WhatsApp para afinar los tonos fue muy clara y humana. El globo de revelación funcionó perfecto para el momento de las fotos.',
+    role: 'Evento Corporativo 15 Sep',
+    comment: 'Cotizamos el montaje patrio para la cena de la empresa. La atención por WhatsApp fue muy profesional y el resultado superó las expectativas del equipo.',
     rating: 5,
-    event: 'Globo de Revelación',
+    event: 'Arco Monumental Tricolor',
     avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80'
   }
 ];
 
 export const FAQS = [
   {
-    question: '¿Con cuánto tiempo de anticipación se realiza el pedido?',
-    answer: 'Para bouquets y cajas recomendamos de 24 a 48 horas de anticipación. Para montajes de arcos orgánicos y eventos completos sugerimos agendar con 1 o 2 semanas de anticipación.'
+    question: '¿Con cuánto tiempo de anticipación se agendan los arcos y montajes?',
+    answer: 'Para arcos orgánicos, backdrops y montajes de gran formato recomendamos agendar con 1 a 2 semanas de anticipación para asegurar disponibilidad de fecha y paleta. Para bouquets con burbuja aceptamos pedidos con 24 a 48 horas.'
   },
   {
-    question: '¿Cuánto tiempo flotan los globos con helio?',
-    answer: 'Nuestros bouquets de látex utilizan tratamiento Ultra Hi-Float que prolonga la flotación de 4 a 7 días en interiores. Los globos burbuja cristalinos se mantienen de 10 a 20 días.'
+    question: '¿Cómo se fijan los arcos sin dañar las paredes?',
+    answer: 'Utilizamos estructuras metálicas autoportantes con contrapeso o fijaciones especiales desmontables y seguras que no perforan ni maltratan acabados arquitectónicos.'
   },
   {
-    question: '¿Hacen entregas a domicilio y montaje en el lugar?',
-    answer: 'Sí, entregamos en vehículos acondicionados para proteger los globos de la temperatura y el sol, y nuestro equipo realiza la instalación en la locación del evento.'
+    question: '¿Cuánto tiempo duran los arcos orgánicos con aire?',
+    answer: 'Nuestros arcos orgánicos se calibran con aire filtrado y látex de alta densidad, manteniendo su volumen y color mate impecables de 2 a 3 semanas en interiores climatizados.'
   },
   {
-    question: '¿Se pueden personalizar los colores y el texto?',
-    answer: 'Todos los arreglos se pueden ajustar en colores, tipografía, dedicatorias y dimensiones según el estilo de tu celebración.'
+    question: '¿El servicio incluye transporte, instalación y desmontaje?',
+    answer: 'Sí. Nuestro equipo de estilistas traslada todos los materiales e infla/instala en el lugar de tu evento en Ciudad de México y Área Metropolitana.'
   }
 ];

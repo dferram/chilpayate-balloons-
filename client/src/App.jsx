@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProductCarousel from './components/ProductCarousel';
+import SeasonalShowcase from './components/SeasonalShowcase';
 import BalloonCustomizer from './components/BalloonCustomizer';
 import ServicesGrid from './components/ServicesGrid';
 import ProcessSteps from './components/ProcessSteps';
@@ -41,7 +42,10 @@ export default function App() {
           onQuickQuote={handleQuickQuote}
         />
 
-        {/* Live 3D Balloon Customizer & Simulator */}
+        {/* Dedicated Seasonal 15 de Septiembre Section */}
+        <SeasonalShowcase onQuickQuote={handleQuickQuote} />
+
+        {/* Live Arches & Arrangements Configurator */}
         <BalloonCustomizer />
 
         {/* Services & Occasions */}
