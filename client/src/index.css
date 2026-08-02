@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  body {
+    background-color: #F9F7F4;
+    color: #1A191C;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.03em;
+  }
+}
+
+/* Minimalist Glass & Surfaces */
+.glass-nav {
+  background: rgba(249, 247, 244, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26, 25, 28, 0.06);
+}
+
+.clean-card {
+  background: #FFFFFF;
+  border: 1px solid #EAE6DF;
+}
+
+.clean-card:hover {
+  border-color: #D6D0C5;
+  box-shadow: 0 16px 32px -8px rgba(26, 25, 28, 0.06);
+}
+
+/* Hide scrollbar for clean carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D Balloon subtle highlight (realistic matte & satin) */
+.balloon-3d {
+  position: relative;
+  border-radius: 50% 50% 50% 50% / 46% 46% 54% 54%;
+  transition: transform 0.3s ease-out;
+}
+
+.balloon-3d::after {
+  content: '';
+  position: absolute;
+  top: 14%;
+  left: 20%;
+  width: 22%;
+  height: 32%;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 75%);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  pointer-events: none;
+}
+
+/* Giant Editorial Typography Style */
+.hero-title-giant {
+  font-size: clamp(3.5rem, 13vw, 12rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
