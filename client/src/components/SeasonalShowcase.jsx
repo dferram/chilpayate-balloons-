@@ -155,7 +155,7 @@ export default function SeasonalShowcase() {
               <button
                 key={design.id}
                 onClick={() => setActiveTab(index)}
-                className={`p-5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between gap-5 relative overflow-hidden ${
+                className={`p-5 rounded-2xl border text-left transition-all duration-300 ease-out flex flex-col justify-between gap-5 relative overflow-hidden ${
                   isSelected
                     ? 'bg-stone-900 border-stone-200 ring-2 ring-white/30 shadow-2xl scale-[1.02]'
                     : 'bg-stone-950/70 border-stone-800/80 hover:bg-stone-900 hover:border-stone-700 text-stone-400'
@@ -202,10 +202,10 @@ export default function SeasonalShowcase() {
           })}
         </div>
 
-        {/* Big Spotlight Display with smooth pop animation on tab change */}
+        {/* Big Spotlight Display with smooth fluid enter */}
         <div
           key={activeDesign.id}
-          className="rounded-3xl bg-stone-900 border border-stone-800 p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center animate-balloon-pop"
+          className="rounded-3xl bg-stone-900 border border-stone-800 p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center smooth-fade-enter"
         >
           
           {/* Left: Rich Realistic Organic Balloon Arch Illustration / Render Canvas */}
@@ -249,7 +249,7 @@ export default function SeasonalShowcase() {
 
               {/* ARCH SHAPE */}
               {activeDesign.svgType === 'arch' && (
-                <g className="transition-all duration-500">
+                <g className="transition-all duration-500 ease-out">
                   <rect x="110" y="80" width="180" height="210" fill="none" stroke="#2D2B33" strokeWidth="2" strokeDasharray="4 4" rx="6" />
                   
                   {/* Dense organic tricolor balloon clusters */}
@@ -285,7 +285,7 @@ export default function SeasonalShowcase() {
 
               {/* CIRCLE BACKDROP SHAPE */}
               {activeDesign.svgType === 'circle' && (
-                <g className="transition-all duration-500">
+                <g className="transition-all duration-500 ease-out">
                   <circle cx="200" cy="150" r="105" fill="none" stroke="#D4AF37" strokeWidth="4" />
                   <line x1="160" y1="255" x2="160" y2="290" stroke="#8A6D19" strokeWidth="3" />
                   <line x1="240" y1="255" x2="240" y2="290" stroke="#8A6D19" strokeWidth="3" />
@@ -310,7 +310,7 @@ export default function SeasonalShowcase() {
 
               {/* GARLAND SHAPE */}
               {activeDesign.svgType === 'garland' && (
-                <g className="transition-all duration-500">
+                <g className="transition-all duration-500 ease-out">
                   <line x1="50" y1="160" x2="350" y2="160" stroke="#2D2B33" strokeWidth="2" strokeDasharray="3 3" />
                   
                   <circle cx="70" cy="140" r="24" fill="url(#greenBalloon)" />
@@ -330,7 +330,7 @@ export default function SeasonalShowcase() {
 
               {/* BOUQUET SHAPE */}
               {activeDesign.svgType === 'bouquet' && (
-                <g className="transition-all duration-500">
+                <g className="transition-all duration-500 ease-out">
                   <path d="M200 135 Q 195 210 200 270" stroke="#D4AF37" strokeWidth="1.5" fill="none" />
                   <rect x="185" y="270" width="30" height="15" rx="3" fill="#D4AF37" />
 
@@ -409,7 +409,7 @@ export default function SeasonalShowcase() {
 
               <button
                 onClick={() => handleBookWhatsApp(activeDesign)}
-                className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-black bg-white hover:bg-stone-200 transition flex items-center justify-center gap-2 shadow-lg"
+                className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-black bg-white hover:bg-stone-200 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg active:scale-98"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Apartar en Querétaro</span>

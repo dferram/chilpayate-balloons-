@@ -93,15 +93,15 @@ export default function BalloonCustomizer() {
                 <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                   Visualización del Montaje
                 </span>
-                <span className="text-xs font-bold text-charcoal-950 px-3 py-1 rounded-full bg-white border border-stone-300 shadow-2xs">
+                <span className="text-xs font-bold text-charcoal-950 px-3 py-1 rounded-full bg-white border border-stone-300 shadow-2xs transition-all duration-300">
                   {selectedStyle.name}
                 </span>
               </div>
 
-              {/* Dynamic SVG Balloon Rendering Canvas with bounce-in pop animation */}
+              {/* Dynamic SVG Balloon Rendering Canvas with smooth glide transition */}
               <div
-                key={`${selectedStyle.id}-${selectedPalette.id}`}
-                className="relative w-full h-80 flex items-center justify-center my-auto z-10 select-none animate-balloon-pop"
+                key={selectedStyle.id}
+                className="relative w-full h-80 flex items-center justify-center my-auto z-10 select-none smooth-fade-enter"
               >
                 
                 <svg viewBox="0 0 400 360" className="w-full h-full max-h-80 drop-shadow-md">
@@ -133,7 +133,7 @@ export default function BalloonCustomizer() {
 
                   {/* 1. ASYMMETRIC ORGANIC ARCH */}
                   {selectedStyle.id === 'arco-asimetrico' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       <rect x="90" y="80" width="220" height="260" fill="none" stroke="#DCD6CC" strokeWidth="2" strokeDasharray="4 4" rx="8" />
                       <line x1="80" y1="340" x2="320" y2="340" stroke="#C4BCAE" strokeWidth="2" />
 
@@ -175,7 +175,7 @@ export default function BalloonCustomizer() {
 
                   {/* 2. SUSPENDED CEILING / LLUVIA FLOTANTE */}
                   {selectedStyle.id === 'techo-flotante' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       <line x1="40" y1="60" x2="360" y2="60" stroke="#B59E83" strokeWidth="2" />
                       <text x="200" y="48" textAnchor="middle" fill="#786F66" fontSize="10" fontWeight="bold">PLAFÓN / VIGAS DEL TECHO</text>
                       
@@ -205,7 +205,7 @@ export default function BalloonCustomizer() {
 
                   {/* 3. CIRCULAR PHOTOWALL BACKDROP */}
                   {selectedStyle.id === 'backdrop-circular' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       <circle cx="200" cy="170" r="120" fill="none" stroke="#DFB77D" strokeWidth="4" />
                       <line x1="150" y1="280" x2="150" y2="330" stroke="#B59E83" strokeWidth="3" />
                       <line x1="250" y1="280" x2="250" y2="330" stroke="#B59E83" strokeWidth="3" />
@@ -231,7 +231,7 @@ export default function BalloonCustomizer() {
 
                   {/* 4. FULL BALLOON WALL */}
                   {selectedStyle.id === 'muro-completo' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       <rect x="50" y="70" width="300" height="240" fill="#EAE5DC" rx="6" stroke="#C4BCAE" strokeWidth="1.5" />
                       
                       {/* Grid of high density interlaced organic balloons */}
@@ -249,7 +249,7 @@ export default function BalloonCustomizer() {
 
                   {/* 5. DUO ORGANIC COLUMNS */}
                   {selectedStyle.id === 'columnas-duo' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       {/* Left Column */}
                       <rect x="80" y="325" width="60" height="10" rx="3" fill="#1A191D" />
                       <circle cx="110" cy="305" r="26" fill="url(#dynC1)" />
@@ -272,7 +272,7 @@ export default function BalloonCustomizer() {
 
                   {/* 6. WALL GUIRNALDA */}
                   {selectedStyle.id === 'guirnalda-mural' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       <line x1="40" y1="180" x2="360" y2="180" stroke="#DCD6CC" strokeWidth="2" strokeDasharray="4 4" />
                       
                       <circle cx="70" cy="160" r="26" fill="url(#dynC1)" />
@@ -292,7 +292,7 @@ export default function BalloonCustomizer() {
 
                   {/* 7. BUBBLE BOUQUET */}
                   {selectedStyle.id === 'bouquet-burbuja' && (
-                    <g>
+                    <g className="transition-all duration-500 ease-out">
                       <path d="M200 155 Q 195 240 200 315" stroke="#B59E83" strokeWidth="1.5" fill="none" />
                       <rect x="185" y="315" width="30" height="15" rx="3" fill="#DFD3C2" stroke="#B59E83" />
 
@@ -326,7 +326,7 @@ export default function BalloonCustomizer() {
                   {selectedPalette.colors.map((c, i) => (
                     <span
                       key={i}
-                      className="w-3.5 h-3.5 rounded-full border border-stone-300 shadow-2xs"
+                      className="w-3.5 h-3.5 rounded-full border border-stone-300 shadow-2xs transition-all duration-300"
                       style={{ backgroundColor: c }}
                     />
                   ))}
@@ -353,9 +353,9 @@ export default function BalloonCustomizer() {
                     <button
                       key={style.id}
                       onClick={() => setSelectedStyle(style)}
-                      className={`p-3.5 rounded-xl border text-left transition flex flex-col justify-between gap-1.5 ${
+                      className={`p-3.5 rounded-xl border text-left transition-all duration-300 ease-out flex flex-col justify-between gap-1.5 ${
                         isSelected
-                          ? 'bg-stone-50 border-charcoal-950 ring-2 ring-charcoal-950 shadow-xs'
+                          ? 'bg-stone-50 border-charcoal-950 ring-2 ring-charcoal-950 shadow-xs scale-[1.01]'
                           : 'bg-white border-stone-300 hover:bg-stone-50'
                       }`}
                     >
@@ -385,9 +385,9 @@ export default function BalloonCustomizer() {
                 <div className="grid grid-cols-3 gap-2">
                   <button
                     onClick={() => setSelectedSize('standard')}
-                    className={`py-3 px-2 rounded-xl border text-center transition ${
+                    className={`py-3 px-2 rounded-xl border text-center transition-all duration-300 ease-out ${
                       selectedSize === 'standard'
-                        ? 'bg-charcoal-950 text-white border-charcoal-950 font-bold'
+                        ? 'bg-charcoal-950 text-white border-charcoal-950 font-bold shadow-xs'
                         : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-50'
                     }`}
                   >
@@ -397,9 +397,9 @@ export default function BalloonCustomizer() {
 
                   <button
                     onClick={() => setSelectedSize('large')}
-                    className={`py-3 px-2 rounded-xl border text-center transition ${
+                    className={`py-3 px-2 rounded-xl border text-center transition-all duration-300 ease-out ${
                       selectedSize === 'large'
-                        ? 'bg-charcoal-950 text-white border-charcoal-950 font-bold'
+                        ? 'bg-charcoal-950 text-white border-charcoal-950 font-bold shadow-xs'
                         : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-50'
                     }`}
                   >
@@ -409,9 +409,9 @@ export default function BalloonCustomizer() {
 
                   <button
                     onClick={() => setSelectedSize('mega')}
-                    className={`py-3 px-2 rounded-xl border text-center transition ${
+                    className={`py-3 px-2 rounded-xl border text-center transition-all duration-300 ease-out ${
                       selectedSize === 'mega'
-                        ? 'bg-charcoal-950 text-white border-charcoal-950 font-bold'
+                        ? 'bg-charcoal-950 text-white border-charcoal-950 font-bold shadow-xs'
                         : 'bg-white text-stone-700 border-stone-300 hover:bg-stone-50'
                     }`}
                   >
@@ -436,9 +436,9 @@ export default function BalloonCustomizer() {
                     <button
                       key={pal.id}
                       onClick={() => setSelectedPalette(pal)}
-                      className={`p-3.5 rounded-xl border text-left transition flex flex-col justify-between gap-2.5 ${
+                      className={`p-3.5 rounded-xl border text-left transition-all duration-300 ease-out flex flex-col justify-between gap-2.5 ${
                         isSelected
-                          ? 'bg-stone-50 border-charcoal-950 ring-2 ring-charcoal-950 shadow-xs'
+                          ? 'bg-stone-50 border-charcoal-950 ring-2 ring-charcoal-950 shadow-xs scale-[1.01]'
                           : 'bg-white border-stone-300 hover:bg-stone-50'
                       }`}
                     >
@@ -453,7 +453,7 @@ export default function BalloonCustomizer() {
                         {pal.colors.map((color, i) => (
                           <div
                             key={i}
-                            className="w-4 h-4 rounded-full border border-stone-300 shadow-2xs"
+                            className="w-4 h-4 rounded-full border border-stone-300 shadow-2xs transition-all duration-300"
                             style={{ backgroundColor: color }}
                           />
                         ))}
@@ -477,7 +477,7 @@ export default function BalloonCustomizer() {
                   value={bubbleText}
                   onChange={(e) => setBubbleText(e.target.value)}
                   placeholder="Escribe el nombre o mensaje personalizado"
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-charcoal-950 text-charcoal-950 text-sm outline-none transition"
+                  className="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-charcoal-950 text-charcoal-950 text-sm outline-none transition-all duration-300"
                 />
               </div>
             ) : (
@@ -490,8 +490,8 @@ export default function BalloonCustomizer() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <button
                     onClick={() => setAddFoliage(!addFoliage)}
-                    className={`p-3 rounded-xl border text-xs font-semibold text-left transition flex items-center justify-between ${
-                      addFoliage ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950' : 'bg-white border-stone-300'
+                    className={`p-3 rounded-xl border text-xs font-semibold text-left transition-all duration-300 ease-out flex items-center justify-between ${
+                      addFoliage ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950 shadow-2xs' : 'bg-white border-stone-300 hover:bg-stone-50'
                     }`}
                   >
                     <span>Follaje Eucalipto</span>
@@ -500,8 +500,8 @@ export default function BalloonCustomizer() {
 
                   <button
                     onClick={() => setAddChrome(!addChrome)}
-                    className={`p-3 rounded-xl border text-xs font-semibold text-left transition flex items-center justify-between ${
-                      addChrome ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950' : 'bg-white border-stone-300'
+                    className={`p-3 rounded-xl border text-xs font-semibold text-left transition-all duration-300 ease-out flex items-center justify-between ${
+                      addChrome ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950 shadow-2xs' : 'bg-white border-stone-300 hover:bg-stone-50'
                     }`}
                   >
                     <span>Esferas Cromo Oro</span>
@@ -510,8 +510,8 @@ export default function BalloonCustomizer() {
 
                   <button
                     onClick={() => setAddNeon(!addNeon)}
-                    className={`p-3 rounded-xl border text-xs font-semibold text-left transition flex items-center justify-between ${
-                      addNeon ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950' : 'bg-white border-stone-300'
+                    className={`p-3 rounded-xl border text-xs font-semibold text-left transition-all duration-300 ease-out flex items-center justify-between ${
+                      addNeon ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950 shadow-2xs' : 'bg-white border-stone-300 hover:bg-stone-50'
                     }`}
                   >
                     <span>Letrero Neón</span>
@@ -531,12 +531,12 @@ export default function BalloonCustomizer() {
                 type="date"
                 value={eventDate}
                 onChange={(e) => setEventDate(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-charcoal-950 text-charcoal-950 text-sm outline-none transition"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-charcoal-950 text-charcoal-950 text-sm outline-none transition-all duration-300"
               />
             </div>
 
             {/* Price & Instant WhatsApp Quote */}
-            <div className="p-6 rounded-2xl bg-[#F9F7F4] border border-stone-300 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div className="p-6 rounded-2xl bg-[#F9F7F4] border border-stone-300 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 transition-all duration-300">
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-stone-500 block">
                   Presupuesto Estimado
@@ -553,7 +553,7 @@ export default function BalloonCustomizer() {
                 href={generateWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 transition flex items-center justify-center gap-2 shadow-md whitespace-nowrap"
+                className="px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 transition-all duration-300 flex items-center justify-center gap-2 shadow-md whitespace-nowrap active:scale-98"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Cotizar para Querétaro</span>

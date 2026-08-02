@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 /**
  * HeroBalloonCanvas
  * Realistic Physics & Scroll-Driven Balloon Simulation
- * Harmonized with the giant CHILPAYATE editorial typography
+ * Ultra-smooth buoyant fluid dynamics & soft lerping
  */
 
 class BalloonParticle {
@@ -15,8 +15,8 @@ class BalloonParticle {
     this.colors = config.colors;
     this.type = config.type || 'latex';
     this.rotation = config.rotation || 0;
-    this.oscillationSpeed = 0.0012 + Math.random() * 0.0008;
-    this.oscillationAmp = 12 + Math.random() * 16;
+    this.oscillationSpeed = 0.0008 + Math.random() * 0.0005;
+    this.oscillationAmp = 10 + Math.random() * 12;
     this.phase = Math.random() * Math.PI * 2;
     this.stringLength = config.stringLength || 160;
     this.ribbonColor = config.ribbonColor || 'rgba(120, 110, 100, 0.35)';
@@ -39,45 +39,45 @@ class BalloonParticle {
     const baseTargetX = width * this.initialXRatio;
     const baseTargetY = height * this.initialYRatio;
 
-    // Harmonic buoyant drift
+    // Harmonic gentle buoyant drift
     const swayX = Math.sin(time * this.oscillationSpeed + this.phase) * this.oscillationAmp;
-    const swayY = Math.cos(time * this.oscillationSpeed * 0.85 + this.phase) * (this.oscillationAmp * 0.35);
+    const swayY = Math.cos(time * this.oscillationSpeed * 0.75 + this.phase) * (this.oscillationAmp * 0.3);
 
-    // Scroll release flight physics
-    const flightSpeed = (1 + this.layer * 0.4) * 1.7;
-    const liftY = -scrollY * flightSpeed * 1.35;
+    // Ultra-smooth scroll release flight physics
+    const flightSpeed = (1 + this.layer * 0.35) * 1.5;
+    const liftY = -scrollY * flightSpeed * 1.2;
     
-    // Spread gently away from center
+    // Spread gently away from center with ease
     const centerOffset = this.initialXRatio - 0.5;
-    const spreadX = centerOffset * scrollY * 0.55;
+    const spreadX = centerOffset * scrollY * 0.45;
 
-    // Subtle natural air deflection from cursor
+    // Subtle gentle air deflection from cursor
     let mouseForceX = 0;
     let mouseForceY = 0;
     if (mouse.x !== null && mouse.y !== null) {
       const dx = this.x - mouse.x;
       const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 200;
+      const maxDist = 220;
       if (dist < maxDist && dist > 0) {
-        const force = (1 - dist / maxDist) * 28;
+        const force = Math.pow(1 - dist / maxDist, 1.5) * 22;
         mouseForceX = (dx / dist) * force;
-        mouseForceY = (dy / dist) * force * 0.4;
+        mouseForceY = (dy / dist) * force * 0.35;
       }
     }
 
     this.targetX = baseTargetX + swayX + spreadX + mouseForceX;
     this.targetY = baseTargetY + swayY + liftY + mouseForceY;
 
-    // Smooth spring dampening
-    this.x += (this.targetX - this.x) * 0.08;
-    this.y += (this.targetY - this.y) * 0.08;
+    // Buttery smooth damping lerp
+    this.x += (this.targetX - this.x) * 0.045;
+    this.y += (this.targetY - this.y) * 0.045;
 
-    this.rotation = (swayX / this.oscillationAmp) * 0.1;
+    this.rotation = (swayX / this.oscillationAmp) * 0.08;
 
-    // Fade when leaving top of screen
+    // Fade smoothly when leaving top of screen
     if (this.y < -this.radius * 2) {
-      this.opacity = Math.max(0, 1 - Math.abs(this.y + this.radius * 2) / 250);
+      this.opacity = Math.max(0, 1 - Math.abs(this.y + this.radius * 2) / 280);
     } else {
       this.opacity = 1;
     }
@@ -174,10 +174,10 @@ class BalloonParticle {
     const startY = h + 8;
     const len = this.stringLength;
     
-    const wavePhase = time * 0.0025 + this.phase;
-    const sway1 = Math.sin(wavePhase) * 14;
-    const sway2 = Math.cos(wavePhase * 1.2) * 18;
-    const sway3 = Math.sin(wavePhase * 0.8) * 12;
+    const wavePhase = time * 0.0018 + this.phase;
+    const sway1 = Math.sin(wavePhase) * 12;
+    const sway2 = Math.cos(wavePhase * 1.1) * 15;
+    const sway3 = Math.sin(wavePhase * 0.7) * 10;
 
     ctx.moveTo(startX, startY);
     ctx.bezierCurveTo(
@@ -198,7 +198,8 @@ export default function HeroBalloonCanvas() {
   const animationFrameRef = useRef(null);
   const balloonsRef = useRef([]);
   const mouseRef = useRef({ x: null, y: null });
-  const scrollYRef = useRef(0);
+  const rawScrollYRef = useRef(0);
+  const smoothScrollYRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -347,7 +348,7 @@ export default function HeroBalloonCanvas() {
     window.addEventListener('resize', handleResize);
 
     const handleScroll = () => {
-      scrollYRef.current = window.scrollY;
+      rawScrollYRef.current = window.scrollY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -371,9 +372,12 @@ export default function HeroBalloonCanvas() {
       const elapsed = now - startTime;
       ctx.clearRect(0, 0, width, height);
 
+      // Smooth scroll interpolation (low-pass filter)
+      smoothScrollYRef.current += (rawScrollYRef.current - smoothScrollYRef.current) * 0.065;
+
       const sorted = [...balloonsRef.current].sort((a, b) => a.layer - b.layer);
       sorted.forEach((balloon) => {
-        balloon.update(elapsed, scrollYRef.current, mouseRef.current, width, height);
+        balloon.update(elapsed, smoothScrollYRef.current, mouseRef.current, width, height);
         balloon.draw(ctx, elapsed);
       });
 

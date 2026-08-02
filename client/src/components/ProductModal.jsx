@@ -9,25 +9,25 @@ export default function ProductModal({ product, onClose }) {
 
   const handleOrderWhatsApp = () => {
     const message = encodeURIComponent(
-      `Hola Chilpayate Balloons,\n\n` +
+      `Hola Chilpayate Balloons Querétaro,\n\n` +
       `Me interesa cotizar el siguiente montaje:\n` +
       `• Diseño: ${product.name} ($${product.price.toLocaleString('es-MX')})\n` +
       `• Ocasión: ${selectedOccasion}\n` +
       `• Dimensiones: ${product.dimensions}\n` +
       `• Texto personalizado: "${customText || 'Sin texto específico'}"\n\n` +
-      `¿Podrían confirmarme disponibilidad y tiempos de montaje?`
+      `¿Podrían confirmarme disponibilidad y tiempos de montaje en Querétaro?`
     );
     window.open(`https://wa.me/5215555555555?text=${message}`, '_blank');
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-charcoal-950/60 backdrop-blur-xs">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-charcoal-950/60 backdrop-blur-xs transition-opacity duration-300">
       
-      <div className="relative w-full max-w-3xl rounded-2xl bg-white border border-stone-300 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto">
+      <div className="relative w-full max-w-3xl rounded-2xl bg-white border border-stone-300 shadow-2xl overflow-hidden flex flex-col md:flex-row my-auto smooth-fade-enter">
         
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 hover:bg-white text-stone-800 border border-stone-200 transition shadow-2xs"
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 hover:bg-white text-stone-800 border border-stone-200 transition-all duration-300 shadow-2xs"
           aria-label="Cerrar"
         >
           <X className="w-4 h-4" />
@@ -114,7 +114,7 @@ export default function ProductModal({ product, onClose }) {
                   placeholder="Nombre o mensaje para el montaje"
                   value={customText}
                   onChange={(e) => setCustomText(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg border border-stone-300 text-xs text-charcoal-950 focus:outline-none focus:border-charcoal-950"
+                  className="w-full px-3 py-2 rounded-lg border border-stone-300 text-xs text-charcoal-950 focus:outline-none focus:border-charcoal-950 transition-all duration-300"
                 />
               </div>
 
@@ -127,7 +127,7 @@ export default function ProductModal({ product, onClose }) {
                     <button
                       key={occ}
                       onClick={() => setSelectedOccasion(occ)}
-                      className={`text-xs px-3 py-1 rounded-lg font-medium transition ${
+                      className={`text-xs px-3 py-1 rounded-lg font-medium transition-all duration-300 ${
                         selectedOccasion === occ
                           ? 'bg-charcoal-950 text-white'
                           : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
@@ -145,7 +145,7 @@ export default function ProductModal({ product, onClose }) {
           <div className="pt-2">
             <button
               onClick={handleOrderWhatsApp}
-              className="w-full py-3.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 flex items-center justify-center gap-2 transition shadow-xs"
+              className="w-full py-3.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 flex items-center justify-center gap-2 transition-all duration-300 shadow-xs active:scale-98"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Cotizar Montaje por WhatsApp</span>
