@@ -25,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-cream-50 text-charcoal-900 font-sans selection:bg-champagne-300 selection:text-charcoal-950">
+    <div className="min-h-screen flex flex-col bg-[#F9F7F4] text-[#1A191C] font-sans selection:bg-stone-300 selection:text-black">
       
       {/* Navigation */}
       <Navbar onOpenQuote={handleOpenQuote} />

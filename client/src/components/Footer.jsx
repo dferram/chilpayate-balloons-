@@ -1,35 +1,31 @@
 import React from 'react';
-import { Sparkles, Heart, Instagram, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
+import { Instagram, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal-950 text-white pt-20 pb-12 border-t border-charcoal-800 relative overflow-hidden">
-      
-      {/* Background ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-champagne-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+    <footer className="bg-[#141316] text-white pt-20 pb-12 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           
-          {/* Brand Info */}
+          {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-champagne-400 to-blush-300 flex items-center justify-center">
-                <div className="w-4 h-5 bg-white/90 rounded-full balloon-3d relative"></div>
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-white text-charcoal-950 flex items-center justify-center font-display font-bold text-xs">
+                CP
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-2xl tracking-tight text-white leading-none">
-                  Chilpayate
+                <span className="font-display font-bold text-xl tracking-tight text-white leading-none">
+                  CHILPAYATE
                 </span>
-                <span className="text-[9px] tracking-[0.25em] uppercase font-semibold text-champagne-400 font-sans">
-                  Balloons & Styling
+                <span className="text-[9px] tracking-[0.2em] uppercase font-medium text-stone-400 font-sans">
+                  Balloon Styling Studio
                 </span>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-sm leading-relaxed">
-              Alta decoración y estilismo con globos de lujo para bodas, celebraciones y momentos inolvidables. Diseños contemporáneos que transforman tus espacios.
+            <p className="text-xs sm:text-sm text-stone-400 max-w-sm leading-relaxed">
+              Diseño, elaboración y montaje de composiciones con globos de látex biodegradable para bodas, celebraciones privadas y eventos corporativos en Ciudad de México.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -37,7 +33,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-charcoal-900 border border-charcoal-800 hover:border-champagne-400 text-champagne-300 flex items-center justify-center transition hover:scale-105"
+                className="w-9 h-9 rounded-full bg-stone-900 border border-stone-800 hover:border-stone-500 text-stone-300 flex items-center justify-center transition"
                 aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -46,7 +42,7 @@ export default function Footer() {
                 href="https://wa.me/5215555555555"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-charcoal-900 border border-charcoal-800 hover:border-champagne-400 text-emerald-400 flex items-center justify-center transition hover:scale-105"
+                className="w-9 h-9 rounded-full bg-stone-900 border border-stone-800 hover:border-stone-500 text-stone-300 flex items-center justify-center transition"
                 aria-label="WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -54,57 +50,53 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div className="space-y-3">
-            <h4 className="font-display font-bold text-sm uppercase tracking-wider text-champagne-300">
+            <h4 className="font-display font-bold text-xs uppercase tracking-wider text-stone-300">
               Colección
             </h4>
-            <ul className="space-y-2 text-xs text-neutral-400">
+            <ul className="space-y-2 text-xs text-stone-400">
               <li><a href="#catalogo" className="hover:text-white transition">Bouquets de Helio</a></li>
               <li><a href="#catalogo" className="hover:text-white transition">Arcos Orgánicos</a></li>
-              <li><a href="#catalogo" className="hover:text-white transition">Cajas Sorpresa Velvet</a></li>
-              <li><a href="#catalogo" className="hover:text-white transition">Números & Letras Jumbo</a></li>
+              <li><a href="#catalogo" className="hover:text-white transition">Cajas de Regalo Velvet</a></li>
+              <li><a href="#catalogo" className="hover:text-white transition">Números y Letras Gigantes</a></li>
               <li><a href="#catalogo" className="hover:text-white transition">Revelación de Género</a></li>
             </ul>
           </div>
 
           {/* Navigation */}
           <div className="space-y-3">
-            <h4 className="font-display font-bold text-sm uppercase tracking-wider text-champagne-300">
-              Explorar
+            <h4 className="font-display font-bold text-xs uppercase tracking-wider text-stone-300">
+              Navegación
             </h4>
-            <ul className="space-y-2 text-xs text-neutral-400">
-              <li><a href="#personalizador" className="hover:text-white transition">Simulador de Paletas</a></li>
-              <li><a href="#servicios" className="hover:text-white transition">Servicios y Montajes</a></li>
-              <li><a href="#proceso" className="hover:text-white transition">Proceso de Trabajo</a></li>
+            <ul className="space-y-2 text-xs text-stone-400">
+              <li><a href="#personalizador" className="hover:text-white transition">Personalizador de Paleta</a></li>
+              <li><a href="#servicios" className="hover:text-white transition">Servicios e Instalación</a></li>
+              <li><a href="#proceso" className="hover:text-white transition">Metodología</a></li>
               <li><a href="#testimonios" className="hover:text-white transition">Opiniones de Clientes</a></li>
-              <li><a href="#cotizar" className="hover:text-white transition">Solicitar Cotización</a></li>
+              <li><a href="#cotizar" className="hover:text-white transition">Contacto y Cotización</a></li>
             </ul>
           </div>
 
-          {/* Balloon Care Tips */}
+          {/* Balloon Care */}
           <div className="space-y-3">
-            <h4 className="font-display font-bold text-sm uppercase tracking-wider text-champagne-300">
-              Cuidado del Globo
+            <h4 className="font-display font-bold text-xs uppercase tracking-wider text-stone-300">
+              Recomendaciones
             </h4>
-            <ul className="space-y-1.5 text-xs text-neutral-400">
-              <li>✨ Mantener en interior climatizado</li>
-              <li>☀️ Evitar sol directo o fuentes de calor</li>
-              <li>🌬️ Proteger de corrientes de aire frío</li>
-              <li>🎈 Todos nuestros globos son 100% látex biodegradable</li>
+            <ul className="space-y-2 text-xs text-stone-400">
+              <li>Mantener en espacios con temperatura templada.</li>
+              <li>Evitar la exposición directa a luz solar continua.</li>
+              <li>Proteger de corrientes de viento frío o aire acondicionado directo.</li>
+              <li>Material 100% látex natural biodegradable.</li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom copyright */}
-        <div className="pt-8 border-t border-charcoal-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        {/* Bottom */}
+        <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
           <p>© {new Date().getFullYear()} Chilpayate Balloons. Todos los derechos reservados.</p>
-          <div className="flex items-center gap-1 text-xs">
-            <span>Hecho con</span>
-            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-            <span>para momentos inolvidables.</span>
-          </div>
+          <p>Ciudad de México</p>
         </div>
 
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, Check, Sparkles, MessageCircle, ShieldCheck, Heart } from 'lucide-react';
+import { X, Star, Check, MessageCircle } from 'lucide-react';
 
 export default function ProductModal({ product, onClose }) {
   if (!product) return null;
@@ -9,120 +9,111 @@ export default function ProductModal({ product, onClose }) {
 
   const handleOrderWhatsApp = () => {
     const message = encodeURIComponent(
-      `¡Hola Chilpayate Balloons! 🎈\n\n` +
+      `Hola Chilpayate Balloons,\n\n` +
       `Me interesa ordenar el siguiente arreglo:\n` +
-      `📌 *Producto:* ${product.name} ($${product.price.toLocaleString('es-MX')})\n` +
-      `🎉 *Ocasión:* ${selectedOccasion}\n` +
-      `✍️ *Texto personalizado:* "${customText || 'Sin texto específico'}"\n\n` +
+      `• Producto: ${product.name} ($${product.price.toLocaleString('es-MX')})\n` +
+      `• Ocasión: ${selectedOccasion}\n` +
+      `• Texto personalizado: "${customText || 'Sin texto específico'}"\n\n` +
       `¿Tienen disponibilidad para entrega en mi fecha?`
     );
     window.open(`https://wa.me/5215555555555?text=${message}`, '_blank');
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-charcoal-950/60 backdrop-blur-sm animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-charcoal-950/50 backdrop-blur-xs">
       
-      {/* Modal Card */}
-      <div className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl border border-champagne-200 overflow-hidden flex flex-col md:flex-row my-auto">
+      <div className="relative w-full max-w-3xl rounded-2xl bg-white border border-stone-300 shadow-xl overflow-hidden flex flex-col md:flex-row my-auto">
         
-        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/80 hover:bg-white text-charcoal-800 shadow-md transition"
-          aria-label="Cerrar ventana"
+          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/90 hover:bg-white text-stone-800 border border-stone-200 transition"
+          aria-label="Cerrar"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
-        {/* Left Side: Product Image */}
-        <div className="md:w-1/2 relative bg-cream-100 min-h-[280px] md:min-h-full">
+        {/* Left: Image */}
+        <div className="md:w-1/2 relative bg-stone-100 min-h-[260px] md:min-h-full">
           <img
             src={product.image}
             alt={product.name}
             className="w-full h-full object-cover"
           />
           <div className="absolute top-4 left-4">
-            <span className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm ${product.badgeColor}`}>
+            <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded bg-white/95 text-stone-800 border border-stone-200">
               {product.tag}
             </span>
           </div>
 
-          <div className="absolute bottom-4 left-4 right-4 p-3 rounded-2xl bg-charcoal-950/80 backdrop-blur-md text-white text-xs space-y-1">
-            <div className="flex items-center gap-1.5 font-semibold text-champagne-300">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>{product.durability}</span>
+          <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-charcoal-950/85 text-white text-xs space-y-0.5">
+            <div className="font-semibold text-stone-200">
+              {product.durability}
             </div>
-            <p className="text-[11px] text-white/80">{product.dimensions}</p>
+            <p className="text-[11px] text-stone-300">{product.dimensions}</p>
           </div>
         </div>
 
-        {/* Right Side: Product Details and Customization Form */}
+        {/* Right: Details */}
         <div className="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 max-h-[85vh] overflow-y-auto">
           
           <div className="space-y-4">
-            
-            {/* Title & Rating */}
             <div>
-              <div className="flex items-center gap-1.5 text-xs text-amber-500 font-bold mb-1">
-                <Star className="w-4 h-4 fill-amber-400" />
+              <div className="flex items-center gap-1 text-xs text-stone-700 font-medium mb-1">
+                <Star className="w-3.5 h-3.5 fill-stone-800 text-stone-800" />
                 <span>{product.rating}</span>
-                <span className="text-charcoal-800/50">({product.reviewsCount} opiniones)</span>
+                <span className="text-stone-400">({product.reviewsCount} opiniones)</span>
               </div>
               
-              <h3 className="font-display font-extrabold text-2xl text-charcoal-950">
+              <h3 className="font-display font-bold text-2xl text-charcoal-950">
                 {product.name}
               </h3>
             </div>
 
-            {/* Price */}
             <div className="flex items-baseline gap-2">
-              <span className="font-display font-extrabold text-3xl text-charcoal-950">
+              <span className="font-display font-bold text-3xl text-charcoal-950">
                 ${product.price.toLocaleString('es-MX')}
               </span>
               {product.originalPrice && (
-                <span className="text-sm text-charcoal-800/50 line-through">
+                <span className="text-sm text-stone-400 line-through">
                   ${product.originalPrice.toLocaleString('es-MX')}
                 </span>
               )}
-              <span className="text-xs text-emerald-600 font-bold ml-2">IVA Incluido</span>
             </div>
 
-            <p className="text-xs sm:text-sm text-charcoal-800/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
               {product.description}
             </p>
 
-            {/* What's included */}
-            <div className="space-y-2 pt-2 border-t border-champagne-100">
-              <span className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block">
-                ¿Qué incluye este arreglo?
+            <div className="space-y-2 pt-2 border-t border-stone-100">
+              <span className="text-xs font-semibold uppercase tracking-wider text-stone-700 block">
+                Incluye
               </span>
               <ul className="space-y-1.5">
                 {product.includes.map((item, i) => (
-                  <li key={i} className="text-xs text-charcoal-800/80 flex items-start gap-2">
-                    <Check className="w-3.5 h-3.5 text-champagne-600 flex-shrink-0 mt-0.5" />
+                  <li key={i} className="text-xs text-stone-600 flex items-start gap-2">
+                    <Check className="w-3.5 h-3.5 text-stone-800 flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Customization Options */}
-            <div className="space-y-3 pt-2 border-t border-champagne-100">
+            <div className="space-y-3 pt-2 border-t border-stone-100">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
-                  Texto o Nombre en Vinil (Opcional)
+                <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1">
+                  Texto en vinil (opcional)
                 </label>
                 <input
                   type="text"
-                  placeholder="Ej. Feliz Cumpleaños Mi Amor"
+                  placeholder="Nombre o mensaje especial"
                   value={customText}
                   onChange={(e) => setCustomText(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-champagne-200 text-xs text-charcoal-900 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500"
+                  className="w-full px-3 py-2 rounded-lg border border-stone-300 text-xs text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
+                <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1">
                   Ocasión
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -130,10 +121,10 @@ export default function ProductModal({ product, onClose }) {
                     <button
                       key={occ}
                       onClick={() => setSelectedOccasion(occ)}
-                      className={`text-xs px-3 py-1.5 rounded-xl font-medium transition ${
+                      className={`text-xs px-3 py-1 rounded-lg font-medium transition ${
                         selectedOccasion === occ
-                          ? 'bg-charcoal-900 text-white'
-                          : 'bg-cream-100 text-charcoal-800 hover:bg-champagne-100'
+                          ? 'bg-charcoal-950 text-white'
+                          : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
                       }`}
                     >
                       {occ}
@@ -145,14 +136,13 @@ export default function ProductModal({ product, onClose }) {
 
           </div>
 
-          {/* Action CTA */}
-          <div className="pt-4">
+          <div className="pt-2">
             <button
               onClick={handleOrderWhatsApp}
-              className="w-full py-3.5 rounded-2xl font-bold text-sm text-white bg-charcoal-900 hover:bg-charcoal-950 shadow-lg shadow-charcoal-900/15 flex items-center justify-center gap-2 transition active:scale-98"
+              className="w-full py-3.5 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 flex items-center justify-center gap-2 transition"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>Pedir por WhatsApp Directo</span>
+              <MessageCircle className="w-4 h-4" />
+              <span>Pedir por WhatsApp</span>
             </button>
           </div>
 

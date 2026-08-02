@@ -1,84 +1,60 @@
 import React, { useState } from 'react';
 import { COLOR_PALETTES } from '../data/products';
-import { Sparkles, MessageCircle, RefreshCw, Check, Palette, Type, Calendar } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { MessageCircle, Check, Palette, Type, Calendar } from 'lucide-react';
 
 export default function BalloonCustomizer() {
   const [selectedPalette, setSelectedPalette] = useState(COLOR_PALETTES[0]);
-  const [customText, setCustomText] = useState('Happy 30th Sofia ✨');
-  const [fontStyle, setFontStyle] = useState('font-display');
+  const [customText, setCustomText] = useState('Sofía & Alejandro');
   const [eventDate, setEventDate] = useState('');
-  const [activeBalloonColor, setActiveBalloonColor] = useState(COLOR_PALETTES[0].colors[0]);
-
-  const handleTriggerConfetti = () => {
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: selectedPalette.colors,
-    });
-  };
 
   const handlePaletteSelect = (palette) => {
     setSelectedPalette(palette);
-    setActiveBalloonColor(palette.colors[0]);
   };
 
   const generateWhatsAppLink = () => {
     const text = encodeURIComponent(
-      `¡Hola Chilpayate Balloons! 🎈\n\n` +
-      `Me encantó el personalizador en vivo y me gustaría cotizar mi arreglo:\n` +
-      `🎨 *Paleta elegida:* ${selectedPalette.name}\n` +
-      `✍️ *Texto personalizado:* "${customText}"\n` +
-      `📅 *Fecha estimada:* ${eventDate || 'Por definir'}\n\n` +
-      `¿Podrían confirmarme disponibilidad y precio? ¡Gracias!`
+      `Hola Chilpayate Balloons,\n\n` +
+      `Me gustaría cotizar un arreglo personalizado con estos detalles:\n` +
+      `• Paleta de colores: ${selectedPalette.name}\n` +
+      `• Texto en vinil: "${customText}"\n` +
+      `• Fecha estimada: ${eventDate || 'Por definir'}\n\n` +
+      `¿Podrían indicarme disponibilidad y costo? Gracias.`
     );
     return `https://wa.me/5215555555555?text=${text}`;
   };
 
   return (
-    <section id="personalizador" className="py-24 relative bg-gradient-to-b from-cream-50 via-champagne-50/50 to-cream-50 overflow-hidden">
-      
-      {/* Background ambient lighting */}
-      <div className="absolute top-10 left-1/3 w-80 h-80 bg-champagne-300/25 rounded-full blur-3xl pointer-events-none"></div>
-
+    <section id="personalizador" className="py-24 relative bg-white border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-champagne-300 text-champagne-800 text-xs font-bold uppercase tracking-wider font-display shadow-sm">
-            <Palette className="w-3.5 h-3.5 text-champagne-600" />
-            Simulador en Tiempo Real
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-charcoal-950 tracking-tight">
-            Diseña tu paleta <span className="gold-gradient-text">a medida</span>.
+        <div className="max-w-2xl mb-16 space-y-2">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-500 font-sans block">
+            Personalizador
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl text-charcoal-950 tracking-tight">
+            Configuración de Paleta
           </h2>
-          <p className="text-charcoal-800/80 text-base sm:text-lg">
-            Experimenta con combinaciones de colores, caligrafía y dedicatorias antes de realizar tu pedido.
+          <p className="text-stone-600 text-sm sm:text-base">
+            Elige los tonos y visualiza la dedicatoria para tu composición de globos.
           </p>
         </div>
 
         {/* Customizer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Interactive 3D Visualizer */}
+          {/* Left: 3D Balloon Preview */}
           <div className="lg:col-span-6 flex flex-col items-center justify-center">
             
-            {/* Visualizer Frame */}
-            <div className="relative w-full max-w-md aspect-square rounded-3xl bg-gradient-to-b from-white/90 to-cream-100/90 border border-white p-8 shadow-2xl backdrop-blur-xl flex flex-col items-center justify-between overflow-hidden">
+            <div className="relative w-full max-w-md aspect-square rounded-2xl bg-[#F9F7F4] border border-stone-200 p-8 flex flex-col items-center justify-between">
               
-              {/* Top ambient pill */}
-              <div className="w-full flex items-center justify-between z-20">
-                <span className="text-[11px] font-bold text-charcoal-800/60 uppercase tracking-widest">
-                  Previsualización 3D
+              <div className="w-full flex items-center justify-between">
+                <span className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">
+                  Vista Previa
                 </span>
-                <button
-                  onClick={handleTriggerConfetti}
-                  className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 hover:bg-white text-champagne-700 border border-champagne-200 shadow-sm flex items-center gap-1.5 transition"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                  <span>Probar Confeti</span>
-                </button>
+                <span className="text-xs font-medium text-stone-700">
+                  {selectedPalette.name}
+                </span>
               </div>
 
               {/* 3D Balloon Cluster Composition */}
@@ -86,11 +62,10 @@ export default function BalloonCustomizer() {
                 
                 {/* Background Balloon 1 */}
                 <div
-                  className="absolute w-28 h-36 rounded-full balloon-3d shadow-xl animate-float-slow -translate-x-12 -translate-y-8"
+                  className="absolute w-28 h-36 rounded-full balloon-3d -translate-x-10 -translate-y-6"
                   style={{
                     backgroundColor: selectedPalette.colors[1] || '#E8A8A8',
-                    boxShadow: `inset -8px -8px 16px rgba(0,0,0,0.18), inset 8px 8px 16px rgba(255,255,255,0.7), 0 20px 30px rgba(0,0,0,0.1)`,
-                    filter: 'brightness(0.96)',
+                    boxShadow: 'inset -6px -6px 14px rgba(0,0,0,0.14), inset 6px 6px 14px rgba(255,255,255,0.65), 0 14px 24px rgba(0,0,0,0.08)',
                   }}
                 >
                   <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3 h-2 rounded-b" style={{ backgroundColor: selectedPalette.colors[1] }}></div>
@@ -98,53 +73,49 @@ export default function BalloonCustomizer() {
 
                 {/* Background Balloon 2 */}
                 <div
-                  className="absolute w-28 h-36 rounded-full balloon-3d shadow-xl animate-float-medium translate-x-12 -translate-y-6"
+                  className="absolute w-28 h-36 rounded-full balloon-3d translate-x-10 -translate-y-4"
                   style={{
                     backgroundColor: selectedPalette.colors[2] || '#DFB77D',
-                    boxShadow: `inset -8px -8px 16px rgba(0,0,0,0.18), inset 8px 8px 16px rgba(255,255,255,0.7), 0 20px 30px rgba(0,0,0,0.1)`,
-                    filter: 'brightness(0.92)',
+                    boxShadow: 'inset -6px -6px 14px rgba(0,0,0,0.14), inset 6px 6px 14px rgba(255,255,255,0.65), 0 14px 24px rgba(0,0,0,0.08)',
                   }}
                 >
                   <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3 h-2 rounded-b" style={{ backgroundColor: selectedPalette.colors[2] }}></div>
                 </div>
 
-                {/* Main Foreground Jumbo Balloon with custom message */}
+                {/* Main Foreground Jumbo Balloon */}
                 <div
-                  className="absolute w-44 h-52 rounded-full balloon-3d shadow-2xl animate-float-fast z-10 flex items-center justify-center p-4 transition-all duration-700"
+                  className="absolute w-44 h-52 rounded-full balloon-3d z-10 flex items-center justify-center p-4 transition-all duration-500"
                   style={{
                     backgroundColor: selectedPalette.colors[0] || '#F5E3C7',
-                    boxShadow: `inset -12px -12px 24px rgba(0,0,0,0.16), inset 12px 12px 24px rgba(255,255,255,0.85), 0 25px 45px rgba(0,0,0,0.12)`,
+                    boxShadow: 'inset -10px -10px 20px rgba(0,0,0,0.12), inset 10px 10px 20px rgba(255,255,255,0.8), 0 20px 35px rgba(0,0,0,0.09)',
                   }}
                 >
-                  {/* Knot */}
                   <div
                     className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-4 h-3 rounded-b"
                     style={{ backgroundColor: selectedPalette.colors[0] }}
                   ></div>
 
-                  {/* Custom Dedication Vinyl */}
+                  {/* Text on balloon */}
                   <div className="text-center z-20 pointer-events-none select-none px-3">
-                    <p
-                      className={`${fontStyle} font-bold text-sm sm:text-base text-charcoal-900 drop-shadow-sm tracking-tight transition-all`}
-                    >
-                      {customText || 'Tu Mensaje Aquí'}
+                    <p className="font-display font-bold text-sm sm:text-base text-charcoal-950 tracking-tight">
+                      {customText || 'Texto personalizado'}
                     </p>
                   </div>
 
-                  {/* Dangling satin ribbons */}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[2px] h-20 bg-champagne-400/70"></div>
+                  {/* Ribbon */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[1.5px] h-16 bg-stone-400"></div>
                 </div>
 
               </div>
 
               {/* Palette Info Footer */}
-              <div className="w-full pt-4 border-t border-champagne-200/50 flex items-center justify-between text-xs text-charcoal-800">
-                <span className="font-semibold">{selectedPalette.name}</span>
+              <div className="w-full pt-4 border-t border-stone-200 flex items-center justify-between text-xs text-stone-600">
+                <span>{selectedPalette.description}</span>
                 <div className="flex items-center gap-1.5">
                   {selectedPalette.colors.map((c, i) => (
                     <span
                       key={i}
-                      className="w-3.5 h-3.5 rounded-full border border-white shadow-xs"
+                      className="w-3.5 h-3.5 rounded-full border border-stone-300"
                       style={{ backgroundColor: c }}
                     ></span>
                   ))}
@@ -155,42 +126,41 @@ export default function BalloonCustomizer() {
 
           </div>
 
-          {/* Right Column: Customization Controls */}
+          {/* Right: Controls */}
           <div className="lg:col-span-6 space-y-6">
             
             {/* 1. Palette Selector */}
             <div className="space-y-3">
-              <label className="text-xs uppercase font-extrabold tracking-wider text-charcoal-900 flex items-center gap-2">
-                <Palette className="w-4 h-4 text-champagne-600" />
-                <span>1. Selecciona una Paleta Cromática</span>
+              <label className="text-xs uppercase font-bold tracking-wider text-stone-700 flex items-center gap-2">
+                <Palette className="w-4 h-4 text-stone-700" />
+                <span>1. Paleta de Color</span>
               </label>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {COLOR_PALETTES.map((pal) => {
                   const isSelected = selectedPalette.id === pal.id;
                   return (
                     <button
                       key={pal.id}
                       onClick={() => handlePaletteSelect(pal)}
-                      className={`p-3.5 rounded-2xl border text-left transition-all duration-300 flex flex-col justify-between gap-2.5 ${
+                      className={`p-3 rounded-xl border text-left transition flex flex-col justify-between gap-2 ${
                         isSelected
-                          ? 'bg-white border-champagne-500 shadow-md ring-2 ring-champagne-400/40'
-                          : 'bg-white/70 border-champagne-200/80 hover:bg-white hover:border-champagne-300'
+                          ? 'bg-stone-50 border-charcoal-950 ring-1 ring-charcoal-950'
+                          : 'bg-white border-stone-300 hover:bg-stone-50'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs text-charcoal-900">
+                        <span className="font-semibold text-xs text-charcoal-950">
                           {pal.name}
                         </span>
-                        {isSelected && <Check className="w-4 h-4 text-champagne-600" />}
+                        {isSelected && <Check className="w-3.5 h-3.5 text-charcoal-950" />}
                       </div>
 
-                      {/* Color circles */}
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1">
                         {pal.colors.map((color, i) => (
                           <div
                             key={i}
-                            className="w-5 h-5 rounded-full border border-white/80 shadow-xs"
+                            className="w-4 h-4 rounded-full border border-stone-200"
                             style={{ backgroundColor: color }}
                           />
                         ))}
@@ -201,27 +171,27 @@ export default function BalloonCustomizer() {
               </div>
             </div>
 
-            {/* 2. Custom Dedication Text */}
-            <div className="space-y-3">
-              <label className="text-xs uppercase font-extrabold tracking-wider text-charcoal-900 flex items-center gap-2">
-                <Type className="w-4 h-4 text-champagne-600" />
-                <span>2. Texto en Vinil Personalizado</span>
+            {/* 2. Custom Text */}
+            <div className="space-y-2">
+              <label className="text-xs uppercase font-bold tracking-wider text-stone-700 flex items-center gap-2">
+                <Type className="w-4 h-4 text-stone-700" />
+                <span>2. Texto Personalizado en el Globo</span>
               </label>
 
               <input
                 type="text"
-                maxLength={45}
+                maxLength={40}
                 value={customText}
                 onChange={(e) => setCustomText(e.target.value)}
-                placeholder="Ej. Feliz Cumpleaños Sofía / Te Amo"
-                className="w-full px-4 py-3.5 rounded-2xl bg-white border border-champagne-200 focus:border-champagne-500 focus:ring-2 focus:ring-champagne-400/30 text-charcoal-900 text-sm font-medium outline-none shadow-sm transition"
+                placeholder="Nombre o mensaje para el arreglo"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-charcoal-950 text-charcoal-950 text-sm outline-none transition"
               />
             </div>
 
             {/* 3. Event Date */}
-            <div className="space-y-3">
-              <label className="text-xs uppercase font-extrabold tracking-wider text-charcoal-900 flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-champagne-600" />
+            <div className="space-y-2">
+              <label className="text-xs uppercase font-bold tracking-wider text-stone-700 flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-stone-700" />
                 <span>3. Fecha Estimada del Evento</span>
               </label>
 
@@ -229,24 +199,21 @@ export default function BalloonCustomizer() {
                 type="date"
                 value={eventDate}
                 onChange={(e) => setEventDate(e.target.value)}
-                className="w-full px-4 py-3.5 rounded-2xl bg-white border border-champagne-200 focus:border-champagne-500 focus:ring-2 focus:ring-champagne-400/30 text-charcoal-900 text-sm font-medium outline-none shadow-sm transition"
+                className="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 focus:border-charcoal-950 text-charcoal-950 text-sm outline-none transition"
               />
             </div>
 
-            {/* Action CTA with instant WhatsApp Generation */}
-            <div className="pt-4">
+            {/* Action CTA */}
+            <div className="pt-2">
               <a
                 href={generateWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 px-6 rounded-2xl font-bold text-sm text-white bg-charcoal-900 hover:bg-charcoal-950 shadow-xl shadow-charcoal-900/15 active:scale-98 transition-all flex items-center justify-center gap-3 group"
+                className="w-full py-4 px-6 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 transition flex items-center justify-center gap-2.5"
               >
-                <MessageCircle className="w-5 h-5 text-emerald-400 group-hover:scale-110 transition-transform" />
+                <MessageCircle className="w-4 h-4" />
                 <span>Solicitar esta combinación por WhatsApp</span>
               </a>
-              <p className="text-[11px] text-charcoal-800/60 text-center mt-2.5">
-                Te enviaremos foto muestra y cotización final de inmediato sin compromiso.
-              </p>
             </div>
 
           </div>

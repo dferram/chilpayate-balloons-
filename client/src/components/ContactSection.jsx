@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, MessageCircle, Send, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Phone, MapPin, Clock, MessageCircle } from 'lucide-react';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -12,8 +12,6 @@ export default function ContactSection() {
     notes: '',
   });
 
-  const [submitted, setSubmitted] = useState(false);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,18 +19,18 @@ export default function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = encodeURIComponent(
-      `¡Hola Chilpayate Balloons! 🎈\n\n` +
-      `Me gustaría solicitar una cotización con los siguientes datos:\n` +
-      `👤 *Nombre:* ${formData.name}\n` +
-      `📱 *Teléfono:* ${formData.phone}\n` +
-      `🎉 *Tipo de Evento:* ${formData.eventType}\n` +
-      `📅 *Fecha:* ${formData.date || 'Por confirmar'}\n` +
-      `📍 *Ubicación:* ${formData.location || 'CDMX / Área Metropolitana'}\n` +
-      `💰 *Presupuesto estimado:* ${formData.budget}\n` +
-      `📝 *Detalles adicionales:* ${formData.notes || 'Ninguno'}`
+      `Hola Chilpayate Balloons,\n\n` +
+      `Me gustaría solicitar una cotización para un evento:\n` +
+      `• Nombre: ${formData.name}\n` +
+      `• Teléfono: ${formData.phone}\n` +
+      `• Tipo de Evento: ${formData.eventType}\n` +
+      `• Fecha: ${formData.date || 'Por confirmar'}\n` +
+      `• Ubicación: ${formData.location || 'CDMX'}\n` +
+      `• Rango de Presupuesto: ${formData.budget}\n` +
+      `• Detalles: ${formData.notes || 'Ninguno adicional'}\n\n` +
+      `Quedo atento a su respuesta.`
     );
 
-    // Call API (or fallback to WhatsApp directly)
     try {
       fetch('/api/quotes', {
         method: 'POST',
@@ -42,130 +40,115 @@ export default function ContactSection() {
     } catch (err) {}
 
     window.open(`https://wa.me/5215555555555?text=${text}`, '_blank');
-    setSubmitted(true);
   };
 
   return (
-    <section id="cotizar" className="py-24 relative bg-mesh-radial">
+    <section id="cotizar" className="py-24 relative bg-white border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Info Column */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-champagne-300 text-champagne-800 text-xs font-bold uppercase tracking-wider font-display shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-champagne-600" />
-                Cotización Personalizada
-              </div>
-              <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-charcoal-950 tracking-tight leading-tight">
-                Hagamos realidad el evento de tus <span className="gold-gradient-text">sueños</span>.
+          {/* Left Column */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-500 font-sans block">
+                Contacto Directo
+              </span>
+              <h2 className="font-display font-bold text-3xl sm:text-5xl text-charcoal-950 tracking-tight">
+                Cotiza tu Evento
               </h2>
-              <p className="text-charcoal-800/80 text-base sm:text-lg">
-                Cuéntanos sobre tu celebración y prepararemos una propuesta visual a la medida con renders y cotización detallada en menos de 2 horas.
+              <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+                Cuéntanos sobre tu celebración y prepararemos una propuesta personalizada y presupuesto detallado.
               </p>
             </div>
 
-            {/* Direct Contact Cards */}
-            <div className="space-y-4 pt-2">
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/80 border border-champagne-200/80 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-champagne-100 flex items-center justify-center text-champagne-700">
-                  <Phone className="w-5 h-5" />
-                </div>
+            <div className="space-y-3 pt-4 border-t border-stone-200">
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-[#F9F7F4] border border-stone-200">
+                <Phone className="w-4 h-4 text-stone-700" />
                 <div>
-                  <span className="text-xs text-charcoal-800/60 block font-medium">WhatsApp & Teléfono</span>
-                  <span className="font-bold text-sm text-charcoal-900">+52 (55) 5555-5555</span>
+                  <span className="text-[11px] text-stone-500 block">WhatsApp y Atención</span>
+                  <span className="font-semibold text-xs text-charcoal-950">+52 (55) 5555-5555</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/80 border border-champagne-200/80 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-champagne-100 flex items-center justify-center text-champagne-700">
-                  <MapPin className="w-5 h-5" />
-                </div>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-[#F9F7F4] border border-stone-200">
+                <MapPin className="w-4 h-4 text-stone-700" />
                 <div>
-                  <span className="text-xs text-charcoal-800/60 block font-medium">Zona de Cobertura</span>
-                  <span className="font-bold text-sm text-charcoal-900">CDMX, Estado de México y alrededores</span>
+                  <span className="text-[11px] text-stone-500 block">Cobertura de Entrega</span>
+                  <span className="font-semibold text-xs text-charcoal-950">Ciudad de México y Área Metropolitana</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/80 border border-champagne-200/80 shadow-sm">
-                <div className="w-10 h-10 rounded-xl bg-champagne-100 flex items-center justify-center text-champagne-700">
-                  <Clock className="w-5 h-5" />
-                </div>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-[#F9F7F4] border border-stone-200">
+                <Clock className="w-4 h-4 text-stone-700" />
                 <div>
-                  <span className="text-xs text-charcoal-800/60 block font-medium">Horario de Atención</span>
-                  <span className="font-bold text-sm text-charcoal-900">Lunes a Domingo: 8:00 AM - 9:00 PM</span>
+                  <span className="text-[11px] text-stone-500 block">Horario</span>
+                  <span className="font-semibold text-xs text-charcoal-950">Lunes a Domingo: 8:00 a 20:00 hrs</span>
                 </div>
               </div>
             </div>
-
           </div>
 
-          {/* Right Form Column */}
+          {/* Right Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-3xl bg-white border border-champagne-200/90 shadow-2xl relative">
-              
-              <h3 className="font-display font-bold text-2xl text-charcoal-950 mb-6">
-                Completa los datos de tu evento
-              </h3>
-
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#F9F7F4] border border-stone-200">
               <form onSubmit={handleSubmit} className="space-y-4">
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
-                      Tu Nombre Completo *
+                    <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
+                      Nombre Completo *
                     </label>
                     <input
                       type="text"
                       name="name"
                       required
-                      placeholder="Ej. Carolina Herrera"
+                      placeholder="Tu nombre"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
                       Teléfono / WhatsApp *
                     </label>
                     <input
                       type="tel"
                       name="phone"
                       required
-                      placeholder="Ej. 55 1234 5678"
+                      placeholder="10 dígitos"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
-                      Tipo de Celebración
+                    <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
+                      Tipo de Evento
                     </label>
                     <select
                       name="eventType"
                       value={formData.eventType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900 bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     >
                       <option value="Cumpleaños">Cumpleaños</option>
                       <option value="Boda">Boda</option>
-                      <option value="Baby Shower / Gender Reveal">Baby Shower / Revelación</option>
+                      <option value="Baby Shower / Revelación">Baby Shower / Revelación</option>
                       <option value="Aniversario">Aniversario</option>
                       <option value="Graduación">Graduación</option>
-                      <option value="Evento Corporativo">Evento Corporativo / B2B</option>
-                      <option value="Otro">Otro Motivo</option>
+                      <option value="Corporativo">Evento Corporativo</option>
+                      <option value="Otro">Otro</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
                       Fecha del Evento
                     </label>
                     <input
@@ -173,68 +156,67 @@ export default function ContactSection() {
                       name="date"
                       value={formData.date}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
-                      Zona o Colonia de Entrega
+                    <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
+                      Zona o Colonia
                     </label>
                     <input
                       type="text"
                       name="location"
-                      placeholder="Ej. Polanco, Roma Norte, Naucalpan"
+                      placeholder="Ej. Polanco, Roma, Naucalpan"
                       value={formData.location}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     />
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
-                      Presupuesto Aproximado
+                    <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
+                      Rango de Presupuesto
                     </label>
                     <select
                       name="budget"
                       value={formData.budget}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900 bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950"
                     >
-                      <option value="Básico ($800 - $1,500)">Bouquet / Básico ($800 - $1,500)</option>
-                      <option value="Medio ($1,500 - $3,500)">Medio / Arco Pequeño ($1,500 - $3,500)</option>
-                      <option value="Premium ($3,500 - $7,000)">Premium / Arco Completo ($3,500 - $7,000)</option>
-                      <option value="Gala / VIP (+$7,000)">Gala / Escenografía VIP (+$7,000)</option>
+                      <option value="Básico ($800 - $1,500)">Bouquet individual ($800 - $1,500)</option>
+                      <option value="Medio ($1,500 - $3,500)">Composición media ($1,500 - $3,500)</option>
+                      <option value="Completo ($3,500 - $7,000)">Arco orgánico ($3,500 - $7,000)</option>
+                      <option value="Escenografía (+$7,000)">Escenografía completa (+$7,000)</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-charcoal-900 block mb-1.5">
-                    Ideas, Colores o Detalles Especiales
+                  <label className="text-xs font-semibold uppercase tracking-wider text-stone-700 block mb-1.5">
+                    Detalles o Notas
                   </label>
                   <textarea
                     rows={3}
                     name="notes"
-                    placeholder="Cuéntanos colores de tu evento, temática o cualquier detalle especial..."
+                    placeholder="Colores, temática o requerimientos de instalación..."
                     value={formData.notes}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-champagne-200 focus:outline-none focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 text-xs sm:text-sm text-charcoal-900 resize-none"
+                    className="w-full px-4 py-3 rounded-xl border border-stone-300 bg-white text-xs sm:text-sm text-charcoal-950 focus:outline-none focus:border-charcoal-950 resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-2xl font-bold text-sm text-white bg-charcoal-900 hover:bg-charcoal-950 shadow-xl shadow-charcoal-900/15 flex items-center justify-center gap-2.5 transition active:scale-98"
+                  className="w-full py-4 rounded-xl font-semibold text-xs uppercase tracking-wider text-white bg-charcoal-950 hover:bg-stone-800 transition flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-5 h-5 text-emerald-400" />
-                  <span>Enviar y Recibir Cotización en WhatsApp</span>
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Enviar Cotización por WhatsApp</span>
                 </button>
 
               </form>
-
             </div>
           </div>
 
